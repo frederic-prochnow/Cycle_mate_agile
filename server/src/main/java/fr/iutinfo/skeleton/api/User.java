@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+* @author team9
+* GESTION UTILISATEURS
+*/
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;

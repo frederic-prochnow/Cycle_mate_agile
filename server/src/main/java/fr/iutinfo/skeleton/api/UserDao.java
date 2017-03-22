@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+* @author team9
+* REQUETE DE VERIFCATION SQL UTILISATEURS
+*/
 import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;

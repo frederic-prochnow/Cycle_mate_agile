@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+ * @author team9
+ * CONFIGURATION DE L API
+ */
 import fr.iutinfo.skeleton.auth.AuthFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
