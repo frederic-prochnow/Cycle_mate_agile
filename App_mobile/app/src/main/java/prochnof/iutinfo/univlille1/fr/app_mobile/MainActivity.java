@@ -1,13 +1,16 @@
 package prochnof.iutinfo.univlille1.fr.app_mobile;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import java.util.ArrayList;
 
@@ -16,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> lead = new ArrayList<String>();
     CustomAdapter adapterLead;
     ArrayAdapter<String> adapterChat;
-
+    VideoView video;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +48,17 @@ public class MainActivity extends AppCompatActivity {
         ListView listChat = (ListView)findViewById(R.id.chat);
         listChat.setAdapter(adapterChat);
 
+       /* video = (VideoView) findViewById(R.id.videoView2);
+        video.setMediaController(new MediaController(this));
+        Uri uri = Uri.parse("https://www.youtube.com/watch?v=GjsnYmi4z0U");
+        video.setVideoURI(uri);
+        video.requestFocus();
+        video.start();*/
+
 
     }
+
+
     public ArrayList<String> top10(ArrayList<String> s,String nom,boolean b){
         ArrayList<String> res = new ArrayList<String>();
         for(int i=0;i<10;i++){
