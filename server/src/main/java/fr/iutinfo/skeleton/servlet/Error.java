@@ -28,14 +28,8 @@ public class Error extends HttpServlet{
 			type = req.getParameter("cause");
 			
 			switch (type) {
-			case "xmlselect":
-				page.println("<h1>Erreur 400 : Bad Request</h1><br><div>Vous avez tenté d'effectuer un select sans utiliser le mot clé \"select\".</div>");
-				break;
-			case "xmlresptype":
-				page.println("<h1>Erreur 400 : Bad Request</h1><br><div>Vous avez tenté d'afficher un type de donnée inconnu.</div>");
-				break;
 			case "xmltableset":
-				page.println("<h1>Erreur 400 : Bad Request</h1><br><div>Vous avez tenté d'afficher une table invalide.</div>");
+				page.println("<h1>Erreur 404 : donnée introuvable</h1><br><div>Vous avez tenté d'accéder à une table inexistante.</div>");
 				break;
 			default:
 				break;
