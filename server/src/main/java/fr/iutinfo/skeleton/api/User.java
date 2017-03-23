@@ -35,6 +35,10 @@ public class User implements Principal {
         this.name = name;
         this.alias = alias;
     }
+    public User(int id, String name, String alias, String email){
+    	this(id, name, alias);
+    	this.email = email;
+    }
 
     public User() {
     }

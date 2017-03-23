@@ -6,11 +6,7 @@ package fr.iutinfo.skeleton.servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
-import org.eclipse.persistence.internal.jpa.parsing.jpql.antlr.JPQLParser.selectItem_return;
-
 import java.io.*;
-import java.sql.*;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns={"/Error"})
@@ -32,6 +28,7 @@ public class Error extends HttpServlet{
 				page.println("<h1>Erreur 404 : donnée introuvable</h1><br><div>Vous avez tenté d'accéder à une table inexistante.</div>");
 				break;
 			default:
+				page.println("<h1>Erreur 404 : donnée introuvable</h1><br><div>Ressource inexistante.</div>");
 				break;
 			}
 			
