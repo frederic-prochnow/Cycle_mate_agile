@@ -8,7 +8,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="prochnof.iutinfo.univlille1.fr.app_mobile.MainActivity">
+    tools:context="prochnof.iutinfo.univlille1.fr.app_mobile.MainActivity"
+    android:background="@android:color/darker_gray">
+
+    <TextView
+        android:text="TOP 10 LeaderBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="105dp"
+        android:layout_marginStart="105dp"
+        android:id="@+id/textView2"
+        android:textColor="@android:color/background_light"
+        android:textSize="@dimen/Title"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/videoView2"
+        android:layout_toEndOf="@+id/videoView2" />
 
     <Button
         android:text="Puissance"
@@ -39,7 +53,8 @@
         android:layout_toLeftOf="@+id/vitesse"
         android:layout_toStartOf="@+id/vitesse"
         android:layout_marginRight="270dp"
-        android:layout_marginEnd="270dp" />
+        android:layout_marginEnd="270dp"
+        android:onClick="onClickVideo" />
 
     <VideoView
         android:layout_width="wrap_content"
@@ -52,14 +67,17 @@
         android:layout_height="800dp" />
 
     <ListView
-        android:layout_width="400dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="39dp"
         android:id="@+id/leaderboard"
         android:dividerHeight="0dp"
-        android:layout_height="500dp" />
+        android:layout_height="500dp"
+        android:layout_toRightOf="@+id/videoView2"
+        android:layout_toEndOf="@+id/videoView2"
+        android:layout_width="400dp"
+        android:layout_marginLeft="20dp" />
 
     <ListView
         android:layout_width="400dp"
@@ -68,6 +86,39 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/chat"
         android:dividerHeight="-8dp"
-        android:layout_height="250dp" />
+        android:layout_height="250dp"
+        android:layout_toRightOf="@+id/videoView2"
+        android:layout_toEndOf="@+id/videoView2"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/border"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/chat"
+        android:layout_alignLeft="@+id/chat"
+        android:layout_alignStart="@+id/chat"
+        android:id="@+id/reponse"
+        android:layout_alignRight="@+id/top10"
+        android:layout_alignEnd="@+id/top10"
+        android:layout_alignParentBottom="true"
+        android:hint="   Message..."
+        android:background="@drawable/border"/>
+
+    <TextView
+        android:text="Chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top10"
+        android:textColor="@android:color/background_light"
+        android:textSize="@dimen/Title"
+        android:layout_above="@+id/chat"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginRight="100dp"
+        android:layout_marginEnd="100dp" />
+
 
 </RelativeLayout>
