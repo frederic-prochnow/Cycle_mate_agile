@@ -4,9 +4,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     CustomAdapter adapterLead;
     ArrayAdapter<String> adapterChat;
     VideoView video;
+    EditText et;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,19 +50,37 @@ public class MainActivity extends AppCompatActivity {
 
         adapterChat = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,chat);
         ListView listChat = (ListView)findViewById(R.id.chat);
+
+        et = (EditText) findViewById(R.id.reponse);
+        et.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                    String rep = et.getText().toString();
+                    chat.add(rep);
+                    adapterChat.notifyDataSetChanged();
+                    et.setText("");
+                    et.clearFocus();
+                }
+                return false;
+            }
+        });
         listChat.setAdapter(adapterChat);
-
-       /* video = (VideoView) findViewById(R.id.videoView2);
-        video.setMediaController(new MediaController(this));
-        Uri uri = Uri.parse("https://www.youtube.com/watch?v=GjsnYmi4z0U");
+        video = (VideoView) findViewById(R.id.videoView2);
+        MediaController mc = new MediaController(this);
+        mc.setAnchorView(video);
+        mc.setMediaPlayer(video);
+        String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.makeup;
+        Uri uri = Uri.parse(path);
+        video.setMediaController(mc);
         video.setVideoURI(uri);
-        video.requestFocus();
-        video.start();*/
-
+        video.start();
 
     }
 
+    public void doSend(View view){
 
+    }
     public ArrayList<String> top10(ArrayList<String> s,String nom,boolean b){
         ArrayList<String> res = new ArrayList<String>();
         for(int i=0;i<10;i++){

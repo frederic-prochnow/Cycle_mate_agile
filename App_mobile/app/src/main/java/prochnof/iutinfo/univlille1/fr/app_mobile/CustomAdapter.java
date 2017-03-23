@@ -2,12 +2,16 @@ package prochnof.iutinfo.univlille1.fr.app_mobile;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -47,18 +51,25 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
+
         if (view == null) {
             view = lInflater.inflate(R.layout.listitem, parent, false);
         }
 
         if (position == numero) {
-            view.setBackgroundColor(Color.BLUE);
+            view.setBackgroundColor(Color.parseColor("#2ca0c4"));
+
             System.out.println("Trouvé pos : "+position+" num : "+numero);
         }else{
-            view.setBackgroundColor(Color.GRAY);
+            view.setBackgroundColor(Color.parseColor("#b8b8b8"));
         }
 
         ((TextView) view.findViewById(R.id.heading)).setText(data.get(position));
+        ((TextView)view.findViewById(R.id.heading)).setTextSize(20);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imagevue);
+        String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.chinois;
+        Uri uri = Uri.parse(path);
+        imageView.setImageURI(uri);
 
         return view;
     }
