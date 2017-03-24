@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.auth;
-
+/**
+* @author team9
+* VERIFIE ACCES SECURISER HTTPS ET UTILISATEURS
+*/
 import fr.iutinfo.skeleton.api.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

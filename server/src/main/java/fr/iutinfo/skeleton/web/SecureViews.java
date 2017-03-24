@@ -1,6 +1,8 @@
 package fr.iutinfo.skeleton.web;
-
-
+/**
+* @author team9
+* 
+*/
 import fr.iutinfo.skeleton.api.BDDFactory;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;

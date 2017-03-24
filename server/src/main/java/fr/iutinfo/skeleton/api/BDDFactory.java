@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+ * @author team9
+ * USINE DE CREATION DE TABLE DE BASE DE DONNES
+ */
 import org.skife.jdbi.v2.DBI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

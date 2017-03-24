@@ -1,9 +1,11 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+* @author team9
+* GESTION WEB UTILISATEURS
+*/
 import fr.iutinfo.skeleton.common.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -14,7 +16,7 @@ import static fr.iutinfo.skeleton.api.BDDFactory.getDbi;
 import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 
 @Path("/user")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON) 
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserResource {
     final static Logger logger = LoggerFactory.getLogger(UserResource.class);
@@ -25,6 +27,9 @@ public class UserResource {
             logger.debug("Crate table users");
             dao.createUserTable();
             dao.insert(new User(0, "Margaret Thatcher", "la Dame de fer"));
+            dao.insert(new User(1, "Tartempion", "Ducaillou"));
+            dao.insert(new User(2, "Toto"));
+            dao.insert(new User(3, "tata", "test", "tata-toto@test.com"));
         }
     }
 
@@ -47,6 +52,17 @@ public class UserResource {
         }
         return user.convertToDto();
     }
+    
+    /*@GET
+    @Path("/{name}/{column}")
+    public UserDto getUserParam(@PathParam("name") String name, @PathParam("column") String column) {
+        User user = dao.findColumnByName(name, column);
+        System.out.println("USER("+name+","+column+")  => "+user);
+        if (user == null) {
+            throw new WebApplicationException(404);
+        }
+        return user.convertToDto();
+    }*/
 
     @GET
     public List<UserDto> getAllUsers(@QueryParam("q") String query) {
