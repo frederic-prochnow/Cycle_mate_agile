@@ -58,14 +58,13 @@ public class CustomAdapter extends BaseAdapter {
 
         if (position == numero) {
             view.setBackgroundColor(Color.parseColor("#2ca0c4"));
-
-            System.out.println("Trouvé pos : "+position+" num : "+numero);
+            System.out.println("Trouvé pos : "+position);
         }else{
             view.setBackgroundColor(Color.parseColor("#b8b8b8"));
         }
 
         ((TextView) view.findViewById(R.id.heading)).setText(data.get(position));
-        ((TextView)view.findViewById(R.id.heading)).setTextSize(20);
+        ((TextView)view.findViewById(R.id.heading)).setTextSize(50);
         ImageView imageView = (ImageView) view.findViewById(R.id.imagevue);
         String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.chinois;
         Uri uri = Uri.parse(path);

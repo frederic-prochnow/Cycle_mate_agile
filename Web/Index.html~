@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+			<link rel="stylesheet" href="Style.css"/>
+			<meta charset="UTF-8"/>
+			<title> Cycle_mate </title>
+	</head>
+		
+	<body>
+			<header>
+						<h1>Title</h1>
+			</header>
+	</body>
+</html>

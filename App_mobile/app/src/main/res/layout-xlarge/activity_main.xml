@@ -11,19 +11,6 @@
     tools:context="prochnof.iutinfo.univlille1.fr.app_mobile.MainActivity"
     android:background="@android:color/darker_gray">
 
-    <TextView
-        android:text="TOP 10 LeaderBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="105dp"
-        android:layout_marginStart="105dp"
-        android:id="@+id/textView2"
-        android:textColor="@android:color/background_light"
-        android:textSize="@dimen/Title"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/videoView2"
-        android:layout_toEndOf="@+id/videoView2" />
-
     <Button
         android:text="Puissance"
         android:layout_width="240dp"
@@ -105,7 +92,8 @@
         android:layout_alignEnd="@+id/top10"
         android:layout_alignParentBottom="true"
         android:hint="   Message..."
-        android:background="@drawable/border"/>
+        android:background="@drawable/border"
+        android:paddingLeft="20dp" />
 
     <TextView
         android:text="Chat"
@@ -119,6 +107,43 @@
         android:layout_alignEnd="@+id/textView2"
         android:layout_marginRight="100dp"
         android:layout_marginEnd="100dp" />
+
+    <Button
+        android:text="Envoyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat"
+        android:layout_toRightOf="@+id/reponse"
+        android:id="@+id/envoyer"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:onClick="doSend" />
+
+    <Button
+        android:text="Rechercher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rechercher"
+        android:layout_alignBottom="@+id/reponse"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/chat"
+        android:layout_toRightOf="@+id/envoyer"
+        android:layout_toEndOf="@+id/envoyer" />
+
+    <TextView
+        android:text="LeaderBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textColor="@android:color/background_light"
+        android:textSize="@dimen/Title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="159dp"
+        android:layout_marginEnd="159dp" />
 
 
 </RelativeLayout>
