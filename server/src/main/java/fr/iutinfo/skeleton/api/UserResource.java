@@ -26,10 +26,16 @@ public class UserResource {
         if (!tableExist("users")) {
             logger.debug("Crate table users");
             dao.createUserTable();
-            dao.insert(new User(0, "Margaret Thatcher", "la Dame de fer"));
-            dao.insert(new User(1, "Tartempion", "Ducaillou"));
-            dao.insert(new User(2, "Toto"));
-            dao.insert(new User(3, "tata", "test", "tata-toto@test.com"));
+            dao.insert(new User(1, "Dylan","","dylan@cyclemate.com" ));
+            dao.insert(new User(2, "Douglas","","douglas@cyclemate.com" ));
+            dao.insert(new User(3, "Caroline","","caroline@cyclemate.com" ));
+            dao.insert(new User(4, "Cindy","","cindy@cyclemate.com" ));
+            dao.insert(new User(5, "Baptiste","","baptiste@cyclemate.com" ));
+            dao.insert(new User(6, "Stéphanie","","stephanie@cyclemate.com" ));
+            dao.insert(new User(7, "Maurice","","maurice@cyclemate.com" ));
+            dao.insert(new User(8, "Cassius","","cassius@cyclemate.com" ));
+            dao.insert(new User(9, "Sarah","","sarah@cyclemate.com" ));
+            dao.insert(new User(10, "Stan","","stan@cyclemate.com" ));
         }
     }
 

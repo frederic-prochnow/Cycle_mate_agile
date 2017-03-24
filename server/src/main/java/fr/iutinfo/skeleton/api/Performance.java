@@ -18,6 +18,11 @@ public class Performance {
     private int vitesse;
     private int freqcard;
     private int periode;
+    
+    private int puissancemoy;
+    private int caloriesmoy;
+    private int vitessemoy;
+    private int freqcardmoy;
 
     public Performance(int id, int puissance, int calories, int vitesse, int freqcard,int periode) {
     	this.id = id;
@@ -25,6 +30,20 @@ public class Performance {
     	this.calories = calories;
     	this.vitesse = vitesse;
     	this.freqcard = freqcard;
+    	this.setPeriode(periode);
+    }
+    
+    public Performance(int id, int puissance, int calories, int vitesse, int freqcard,int periode, int puissancemoy, int caloriesmoy, int vitessemoy, int freqcardmoy) {
+    	this.id = id;
+    	this.puissance = puissance;
+    	this.calories = calories;
+    	this.vitesse = vitesse;
+    	this.freqcard = freqcard;
+    	
+    	this.puissancemoy = puissancemoy;
+    	this.caloriesmoy = caloriesmoy;
+    	this.vitessemoy = vitessemoy;
+    	this.freqcardmoy = freqcardmoy;
     	this.setPeriode(periode);
     }
 
@@ -49,6 +68,11 @@ public class Performance {
         this.setVitesse(dto.getVitesse());
         this.setCalories(dto.getCalories());
         this.setFreqcard(dto.getFreqcard());
+        
+        this.setPuissancemoy(dto.getPuissancemoy());
+        this.setVitessemoy(dto.getVitessemoy());
+        this.setCaloriesmoy(dto.getCaloriesmoy());
+        this.setFreqcardmoy(dto.getFreqcardmoy());
         this.setPeriode(dto.getPeriode());
     }
 
@@ -60,6 +84,11 @@ public class Performance {
         dto.setCalories(this.getCalories());
         dto.setFreqcard(this.getFreqcard());
         dto.setPeriode(this.getPeriode());
+        
+        dto.setPuissancemoy(this.getPuissancemoy());
+        dto.setVitessemoy(this.getVitessemoy());
+        dto.setCaloriesmoy(this.getCaloriesmoy());
+        dto.setFreqcardmoy(this.getFreqcardmoy());
         return dto;
     }
 
@@ -109,5 +138,37 @@ public class Performance {
 
 	public void setPeriode(int periode) {
 		this.periode = periode;
+	}
+
+	public int getPuissancemoy() {
+		return puissancemoy;
+	}
+
+	public void setPuissancemoy(int puissancemoy) {
+		this.puissancemoy = puissancemoy;
+	}
+
+	public int getCaloriesmoy() {
+		return caloriesmoy;
+	}
+
+	public void setCaloriesmoy(int caloriesmoy) {
+		this.caloriesmoy = caloriesmoy;
+	}
+
+	public int getVitessemoy() {
+		return vitessemoy;
+	}
+
+	public void setVitessemoy(int vitessemoy) {
+		this.vitessemoy = vitessemoy;
+	}
+
+	public int getFreqcardmoy() {
+		return freqcardmoy;
+	}
+
+	public void setFreqcardmoy(int freqcardmoy) {
+		this.freqcardmoy = freqcardmoy;
 	}
 }

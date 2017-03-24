@@ -14,6 +14,10 @@ public class PerformanceDto implements Principal {
     private int freqcard;
     private int periode;
     
+    private int puissancemoy;
+    private int caloriesmoy;
+    private int vitessemoy;
+    private int freqcardmoy;
 	@Override
 	public String getName() {
 		return ""+id;
@@ -65,5 +69,37 @@ public class PerformanceDto implements Principal {
 
 	public void setPeriode(int periode) {
 		this.periode = periode;
+	}
+
+	public int getPuissancemoy() {
+		return puissancemoy;
+	}
+
+	public void setPuissancemoy(int puissancemoy) {
+		this.puissancemoy = puissancemoy;
+	}
+
+	public int getCaloriesmoy() {
+		return caloriesmoy;
+	}
+
+	public void setCaloriesmoy(int caloriesmoy) {
+		this.caloriesmoy = caloriesmoy;
+	}
+
+	public int getVitessemoy() {
+		return vitessemoy;
+	}
+
+	public void setVitessemoy(int vitessemoy) {
+		this.vitessemoy = vitessemoy;
+	}
+
+	public int getFreqcardmoy() {
+		return freqcardmoy;
+	}
+
+	public void setFreqcardmoy(int freqcardmoy) {
+		this.freqcardmoy = freqcardmoy;
 	}
 }

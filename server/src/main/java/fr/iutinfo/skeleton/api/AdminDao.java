@@ -19,7 +19,7 @@ public interface AdminDao {
 
     @SqlQuery("select * from Admin where AdMinId = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    User findByName(@Bind("id") int id);
+    Admin findByName(@Bind("id") int id);
     
     /*@SqlQuery("select :column from Admin where AdMinId = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
