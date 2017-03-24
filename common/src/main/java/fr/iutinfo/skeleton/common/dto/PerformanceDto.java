@@ -12,8 +12,7 @@ public class PerformanceDto implements Principal {
     private int calories;
     private int vitesse;
     private int freqcard;
-    
-    
+    private int periode;
     
 	@Override
 	public String getName() {
@@ -58,5 +57,13 @@ public class PerformanceDto implements Principal {
 
 	public void setFreqcard(int freqcard) {
 		this.freqcard = freqcard;
+	}
+
+	public int getPeriode() {
+		return periode;
+	}
+
+	public void setPeriode(int periode) {
+		this.periode = periode;
 	}
 }

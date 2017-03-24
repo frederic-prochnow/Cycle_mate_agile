@@ -17,13 +17,15 @@ public class Performance {
     private int calories;
     private int vitesse;
     private int freqcard;
+    private int periode;
 
-    public Performance(int id, int puissance, int calories, int vitesse, int freqcard) {
+    public Performance(int id, int puissance, int calories, int vitesse, int freqcard,int periode) {
     	this.id = id;
     	this.puissance = puissance;
     	this.calories = calories;
     	this.vitesse = vitesse;
     	this.freqcard = freqcard;
+    	this.setPeriode(periode);
     }
 
     public Performance() {}
@@ -38,7 +40,7 @@ public class Performance {
 
     @Override
     public String toString() {
-        return id + ": " + puissance + ", " + calories + ", " + vitesse + ", " + freqcard;
+        return id + ": " + puissance + ", " + calories + ", " + vitesse + ", " + freqcard + "," + periode;
     }
 
     public void initFromDto(PerformanceDto dto) {
@@ -47,6 +49,7 @@ public class Performance {
         this.setVitesse(dto.getVitesse());
         this.setCalories(dto.getCalories());
         this.setFreqcard(dto.getFreqcard());
+        this.setPeriode(dto.getPeriode());
     }
 
     public PerformanceDto convertToDto() {
@@ -56,6 +59,7 @@ public class Performance {
         dto.setVitesse(this.getVitesse());
         dto.setCalories(this.getCalories());
         dto.setFreqcard(this.getFreqcard());
+        dto.setPeriode(this.getPeriode());
         return dto;
     }
 
@@ -97,5 +101,13 @@ public class Performance {
 
 	public void setFreqcard(int freqcard) {
 		this.freqcard = freqcard;
+	}
+
+	public int getPeriode() {
+		return periode;
+	}
+
+	public void setPeriode(int periode) {
+		this.periode = periode;
 	}
 }
