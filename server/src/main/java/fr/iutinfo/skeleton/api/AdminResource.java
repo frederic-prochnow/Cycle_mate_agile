@@ -22,8 +22,8 @@ public class AdminResource {
     private static AdminDao dao = getDbi().open(AdminDao.class);
 
     public AdminResource() throws SQLException {
-        if (!tableExist("Admins")) {
-            logger.debug("Crate table Admins");
+        if (!tableExist("Admin")) {
+            logger.debug("Create table Admin");
             dao.createAdminTable();
             dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
         }
@@ -33,8 +33,6 @@ public class AdminResource {
     public AdminDto createAdmin(AdminDto dto) {
         Admin admin = new Admin();
         admin.initFromDto(dto);
-        int id = dao.insert(admin);
-        dto.setAdMinId(id);
         return dto;
     }
 
@@ -60,10 +58,14 @@ public class AdminResource {
     }*/
 
     @GET
-    public List<Admin> getAllAdmins(@QueryParam("q") String query) {
+    public List<Admin> getAllAdmins(@QueryParam("q") String query) throws SQLException {
         List<Admin> admins;
         if (query == null) {
             admins = dao.all();
+            if (admins.isEmpty()){
+            	dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
+            	admins = dao.all();
+            }
         } else{
         	admins = null;
         }

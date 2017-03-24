@@ -12,7 +12,7 @@ import java.sql.*;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns={"/GetXML"})
 public class GetXML extends HttpServlet{
-	static String bddurl = "src/main/resources/data.db";
+	static String bddurl = "/tmp/data.db";
 	String table;
 	String column;
 	String data;

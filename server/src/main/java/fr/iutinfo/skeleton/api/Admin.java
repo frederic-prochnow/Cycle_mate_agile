@@ -11,18 +11,17 @@ import org.slf4j.LoggerFactory;
 public class Admin {
     final static Logger logger = LoggerFactory.getLogger(Admin.class);
     
-    private int AdMinId = 0;
+    private int AdMinId = 1;
     private String Login;
     private String Password;
 
-    public Admin(int id, String login) {
-        this.AdMinId = id;
+    public Admin(Integer id, String login) {
+    	this.AdMinId = id;
         this.Login = login;
     }
 
-    public Admin(int id, String login, String pwd) {
-        this.AdMinId = id;
-        this.Login = login;
+    public Admin(Integer id, String login, String pwd) {
+    	this(id, login);
         this.Password = pwd;
     }
 

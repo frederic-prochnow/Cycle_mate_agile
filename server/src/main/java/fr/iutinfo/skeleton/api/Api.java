@@ -9,7 +9,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 import javax.ws.rs.ApplicationPath;
 
-@ApplicationPath("/CycleMate/")
+@ApplicationPath("/v1/")
 public class Api extends ResourceConfig {
 
     public Api() {
