@@ -1,9 +1,11 @@
 package fr.iutinfo.skeleton.common.dto;
 
+import java.security.Principal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AdminDto {
+public class AdminDto implements Principal {
     final static Logger logger = LoggerFactory.getLogger(AdminDto.class);
 
     private int AdMinId = 0;
@@ -27,6 +29,10 @@ public class AdminDto {
 	}
 	public void setPassword(String Password) {
 		this.Password = Password;
+	}
+	@Override
+	public String getName() {
+		return getLogin();
 	}
 	
 }
