@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+* @author team9
+* GESTION UTILISATEURS
+*/
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
@@ -31,6 +34,10 @@ public class User implements Principal {
         this.id = id;
         this.name = name;
         this.alias = alias;
+    }
+    public User(int id, String name, String alias, String email){
+    	this(id, name, alias);
+    	this.email = email;
     }
 
     public User() {

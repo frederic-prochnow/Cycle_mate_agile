@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.api;
-
+/**
+ * @author team9
+ * GERE L ACCES AUX RESSOURCES SECURISE
+ */
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

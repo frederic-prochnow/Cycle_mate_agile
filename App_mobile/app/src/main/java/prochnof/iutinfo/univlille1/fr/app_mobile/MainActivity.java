@@ -4,52 +4,57 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.MediaController;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> chat = new ArrayList<String>();
+    ArrayList<String[]> chat = new ArrayList<String[]>();
     ArrayList<String> lead = new ArrayList<String>();
     CustomAdapter adapterLead;
-    ArrayAdapter<String> adapterChat;
+    ChatAdapter adapterChat;
     VideoView video;
     EditText et;
-
+    ListView listChat;
+    String nom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> tmp = new ArrayList<String>();
         String[] tmp2 = {"Dylan","Lucas","Hugo","Ulysse","Vincent","Adrien","Margot","Kevin","Alexandre","Quentin","Cyril","Rodolphe"};
         for(String s :tmp2){
-            tmp.add(s);
+            lead.add(s);
         }
-        String nom = "Vincent";
+        nom = "Vincent";
+        chat.add(new String[]{"Dylan","Yo tout le monde c'est Squishy !"});
+        chat.add(new String[]{"Lucas","Hey salut, ça va ?"});
+        chat.add(new String[]{"Vincent","Ouais tranquil et vous ? mdr"});
+        chat.add(new String[]{"Dylan","Bien frere !"});
 
-        chat.add("Yo tout le monde c'est Squishy !");
-        chat.add("Hey salut, ça va ?");
-        chat.add("Ouais tranquil et toi ? mdr");
-        chat.add("Bien frere !");
-        lead = top10(tmp,nom,true);
-        tmp = top10(tmp,nom,false);
-        adapterLead = new CustomAdapter(this,tmp,myNumber(lead,nom));
-        ListView listLead = (ListView)findViewById(R.id.leaderboard);
 
+        adapterLead = new CustomAdapter(this,lead,myNumber(lead,nom));
+        final ListView listLead = (ListView)findViewById(R.id.leaderboard);
+        System.out.print(myNumber(lead,nom));
 
         listLead.setAdapter(adapterLead);
 
-        adapterChat = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,chat);
-        ListView listChat = (ListView)findViewById(R.id.chat);
+        adapterChat = new ChatAdapter(this,chat,nom);
+        listChat = (ListView)findViewById(R.id.chat);
 
         et = (EditText) findViewById(R.id.reponse);
         et.setOnKeyListener(new View.OnKeyListener() {
@@ -57,10 +62,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
                     String rep = et.getText().toString();
-                    chat.add(rep);
+                    chat.add(new String[]{nom,rep});
                     adapterChat.notifyDataSetChanged();
                     et.setText("");
                     et.clearFocus();
+                    InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+                    listChat.setTranscriptMode(ListView.TRANSCRIPT_MODE_NORMAL);
+                    listChat.setStackFromBottom(true);
                 }
                 return false;
             }
@@ -70,53 +79,44 @@ public class MainActivity extends AppCompatActivity {
         MediaController mc = new MediaController(this);
         mc.setAnchorView(video);
         mc.setMediaPlayer(video);
-        String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.makeup;
+        String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.faze;
         Uri uri = Uri.parse(path);
         video.setMediaController(mc);
         video.setVideoURI(uri);
         video.start();
 
-    }
-
-    public void doSend(View view){
-
-    }
-    public ArrayList<String> top10(ArrayList<String> s,String nom,boolean b){
-        ArrayList<String> res = new ArrayList<String>();
-        for(int i=0;i<10;i++){
-            if(!b) {
-                res.add("N°" + (i + 1) + " : " + s.get(i));
-            }else{
-                res.add(s.get(i));
+        listLead.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PopupWindow popup = new PopupWindow(adapterLead.lInflater.inflate(R.layout.listusersdetails,null,false),500,500,true);
+                //popup.showAtLocation(findViewById(R.id.leaderboard), Gravity.TOP,645,200+position*60);
+                popup.showAtLocation(findViewById(R.id.activity_main), Gravity.TOP,645,245+position*100);
             }
-        }
-        if(myNumber(s,nom)>10){
-            res.set(myNumber(s,nom),nom);
-        }
-        return res;
+        });
+    }
+    public void doSend(View view){
+        String rep = et.getText().toString();
+        chat.add(new String[]{nom,rep});
+        adapterChat.notifyDataSetChanged();
+        et.setText("");
+        et.clearFocus();
+        InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+        listChat.setTranscriptMode(ListView.TRANSCRIPT_MODE_NORMAL);
+        listChat.setStackFromBottom(true);
     }
 
     public int myNumber(ArrayList<String> s,String nom){
-        for(int i=0;i<s.size();i++){
-            System.out.println(" sgeti : -"+s.get(i)+"- nom: -"+nom+"-");
-            if(egal(s.get(i),nom)){
+        System.out.println("Nom : "+nom+" Trouvé en : "+s.size()+" -------------------------------------------------------------------------------------");
+        int i=0;
+        for(String s4 : s){
+            System.out.println("Nom : "+nom+" Trouvé en : "+s4+" -------------------------------------------------------------------------------------");
+            if(s4.equals(nom)){
+                System.out.println("Nom : "+nom+" Trouvé en : "+i+" -------------------------------------------------------------------------------------");
                 return i;
             }
+            i++;
         }
         return -1;
-    }
-
-    public boolean egal(String s1,String s2){
-        if(s1.length() != s2.length()){
-            System.out.println("Raté taille");
-            return false;
-        }
-        for(int i =0;i<s1.length();i++){
-            if(s1.charAt(i) != s2.charAt(i)){
-                System.out.println("Raté nom");
-                return false;
-            }
-        }
-        return true;
     }
 }

@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.servlet;
-
+/**
+* @author team9
+* SERVLET D AFFICHAGE DE REPONSE
+*/
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +17,8 @@ public class Hello extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String simpleParam = getServletConfig().getInitParameter("simpleParam");
-        out.println("Hello World " + simpleParam);
+        //String simpleParam = getServletConfig().getInitParameter("simpleParam");
+        out.println("Hello World " /*+ simpleParam*/);
         out.close();
     }
 

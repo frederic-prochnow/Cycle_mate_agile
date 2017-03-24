@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.auth;
-
+/**
+* @author team9
+* VERFICATEUR CONNECTION
+*/
 import fr.iutinfo.skeleton.api.BDDFactory;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;

@@ -1,5 +1,8 @@
 package fr.iutinfo.skeleton.auth;
-
+/**
+* @author team9
+* VERIFIE LE HEADER DE LA REQUETE D AUTHENTIFICATION
+*/
 import javax.xml.bind.DatatypeConverter;
 
 public class BasicAuth {
