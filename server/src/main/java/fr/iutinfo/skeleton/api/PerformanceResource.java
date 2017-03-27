@@ -187,7 +187,7 @@ public class PerformanceResource {
     }
     
     @GET
-    @Path("/p{p}moy/{id}")
+    @Path("/moy/p{p}/{id}")
     public MoyenneDto getMoyennePeriodicbyID(@PathParam("id") int id, @PathParam("p") int periode) {
     	int moyenneCal = dao.CaloriesMoyPeriodicById(id, periode);
     	int moyennePuis = dao.PuissanceMoyPeriodicById(id, periode);
@@ -198,7 +198,7 @@ public class PerformanceResource {
     }
     
     @GET
-    @Path("/p{p}moy")
+    @Path("/moy/p{p}")
     public Moyenne getMoyenneGenPeriodic(@PathParam("p") int periode) {
     	int moyenneCal = dao.CaloriesMoyPeriodic(periode);
     	int moyennePuis = dao.PuissanceMoyPeriodic(periode);
