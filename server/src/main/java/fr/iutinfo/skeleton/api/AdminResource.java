@@ -20,12 +20,23 @@ import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 public class AdminResource {
     final static Logger logger = LoggerFactory.getLogger(AdminResource.class);
     private static AdminDao dao = getDbi().open(AdminDao.class);
+    private static boolean isDefault = true;
 
+    public void creation_table(){
+    	dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
+    }
+    
     public AdminResource() throws SQLException {
         if (!tableExist("Admin")) {
             logger.debug("Create table Admin");
             dao.createAdminTable();
-            dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
+            creation_table();
+        }if(tableExist("Admin")&&isDefault){
+        	dao.dropAdminTable();
+        	logger.debug("Create table Admin");
+            dao.createAdminTable();
+        	creation_table();
+        	isDefault = false;
         }
     }
 

@@ -10,7 +10,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface PerformanceDao {
-    @SqlUpdate("create table Performance (id integer primary key not null, periode integer, puissance integer, calories integer, vitesse integer, freqcard integer, contraints fk_id foreign key (id) references user(id)")
+    @SqlUpdate("create table Performance (id integer, periode integer, puissance integer, calories integer, vitesse integer, freqcard integer)")
     void createPerformanceTable();
 
     @SqlUpdate("insert into Performance values (:id, :periode, :puissance, :calories, :vitesse, :freqcard)")
@@ -53,6 +53,40 @@ public interface PerformanceDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     int FreqCardMoyById(@Bind("id") int id);
     
+    //dessous : testing debugging...
+    
+    @SqlQuery("select avg(puissance) from Performance where periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int PuissanceMoyPeriodic(@Bind("periode") int periode);
+    
+    @SqlQuery("select avg(calories) from Performance where periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int CaloriesMoyPeriodic(@Bind("periode") int periode);
+    
+    @SqlQuery("select avg(vitesse) from Performance where periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int VitesseMoyPeriodic(@Bind("periode") int periode);
+    
+    @SqlQuery("select avg(freqcard) from Performance where periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int FreqCardMoyPeriodic(@Bind("periode") int periode);
+    
+    @SqlQuery("select avg(puissance) from Performance where id = :id and periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int PuissanceMoyPeriodicById(@Bind("id") int id, @Bind("periode") int periode);
+    
+    @SqlQuery("select avg(calories) from Performance where id = :id and periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int CaloriesMoyPeriodicById(@Bind("id") int id, @Bind("periode") int periode);
+    
+    @SqlQuery("select avg(vitesse) from Performance where id = :id and periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int VitesseMoyPeriodicById(@Bind("id") int id, @Bind("periode") int periode);
+    
+    @SqlQuery("select avg(freqcard) from Performance where id = :id and periode = :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int FreqCardMoyPeriodicById(@Bind("id") int id, @Bind("periode") int periode);
+    
     /*@SqlQuery("select :column from Admin where AdMinId = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     User findColumnByName(@Bind("id")   String id,
@@ -69,9 +103,9 @@ public interface PerformanceDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Performance> all();
 
-    @SqlQuery("select * from Admin where id = :id")
+    @SqlQuery("select * from Performance where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Performance findById(@Bind("id") int id);
+    List<Performance> findById(@Bind("id") int id);
 
     void close();
 }

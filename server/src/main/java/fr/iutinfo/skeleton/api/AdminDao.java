@@ -10,14 +10,14 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface AdminDao {
-    @SqlUpdate("create table Admin (AdMinId integer primary key unique, Login varchar(16), Password varchar(4))")
+    @SqlUpdate("create table Admin (id integer primary key, login varchar(16), password varchar(4))")
     void createAdminTable();
 
-    @SqlUpdate("insert into Admin values (:AdMinId, :Login, :Password)")
+    @SqlUpdate("insert into Admin values (:id, :login, :password)")
     @GetGeneratedKeys
     int insert(@BindBean() Admin admin);
 
-    @SqlQuery("select * from Admin where AdMinId = :id")
+    @SqlQuery("select * from Admin where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Admin findByName(@Bind("id") int id);
     
@@ -28,16 +28,16 @@ public interface AdminDao {
     
 	
     @SqlUpdate("drop table if exists Admin")
-    void dropUserTable();
+    void dropAdminTable();
 
-    @SqlUpdate("delete from Admin where AdMinId = :id")
+    @SqlUpdate("delete from Admin where id = :id")
     void delete(@Bind("id") int id);
 
-    @SqlQuery("select * from Admin order by AdMinId")
+    @SqlQuery("select * from Admin order by id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Admin> all();
 
-    @SqlQuery("select * from Admin where AdMinId = :id")
+    @SqlQuery("select * from Admin where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Admin findById(@Bind("id") int id);
 

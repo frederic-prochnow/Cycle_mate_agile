@@ -21,21 +21,31 @@ import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 public class UserResource {
     final static Logger logger = LoggerFactory.getLogger(UserResource.class);
     private static UserDao dao = getDbi().open(UserDao.class);
+    private static boolean isDefault = true;
+    
+    public void creation_table(){
+    	 logger.debug("Crate table users");
+         dao.createUserTable();
+         dao.insert(new User(1, "Dylan","","dylan@cyclemate.com" ));
+         dao.insert(new User(2, "Douglas","","douglas@cyclemate.com" ));
+         dao.insert(new User(3, "Caroline","","caroline@cyclemate.com" ));
+         dao.insert(new User(4, "Cindy","","cindy@cyclemate.com" ));
+         dao.insert(new User(5, "Baptiste","","baptiste@cyclemate.com" ));
+         dao.insert(new User(6, "Stéphanie","","stephanie@cyclemate.com" ));
+         dao.insert(new User(7, "Maurice","","maurice@cyclemate.com" ));
+         dao.insert(new User(8, "Cassius","","cassius@cyclemate.com" ));
+         dao.insert(new User(9, "Sarah","","sarah@cyclemate.com" ));
+         dao.insert(new User(10, "Stan","","stan@cyclemate.com" ));
+    }
 
     public UserResource() throws SQLException {
         if (!tableExist("users")) {
             logger.debug("Crate table users");
-            dao.createUserTable();
-            dao.insert(new User(1, "Dylan","","dylan@cyclemate.com" ));
-            dao.insert(new User(2, "Douglas","","douglas@cyclemate.com" ));
-            dao.insert(new User(3, "Caroline","","caroline@cyclemate.com" ));
-            dao.insert(new User(4, "Cindy","","cindy@cyclemate.com" ));
-            dao.insert(new User(5, "Baptiste","","baptiste@cyclemate.com" ));
-            dao.insert(new User(6, "Stéphanie","","stephanie@cyclemate.com" ));
-            dao.insert(new User(7, "Maurice","","maurice@cyclemate.com" ));
-            dao.insert(new User(8, "Cassius","","cassius@cyclemate.com" ));
-            dao.insert(new User(9, "Sarah","","sarah@cyclemate.com" ));
-            dao.insert(new User(10, "Stan","","stan@cyclemate.com" ));
+            creation_table();
+        } if(tableExist("users")&& isDefault){
+        	dao.dropUserTable();
+        	creation_table();
+        	isDefault = false;
         }
     }
 
@@ -60,10 +70,9 @@ public class UserResource {
     }
     
     /*@GET
-    @Path("/{name}/{column}")
-    public UserDto getUserParam(@PathParam("name") String name, @PathParam("column") String column) {
-        User user = dao.findColumnByName(name, column);
-        System.out.println("USER("+name+","+column+")  => "+user);
+    @Path("/{id}")
+    public UserDto getUserParam(@PathParam("id") int id) {
+        User user = dao.findById(id);
         if (user == null) {
             throw new WebApplicationException(404);
         }
@@ -83,7 +92,7 @@ public class UserResource {
     }
 
     @DELETE
-    @Path("/{id}")
+    @Path("/del/{id}")
     public void deleteUser(@PathParam("id") int id) {
         dao.delete(id);
     }
