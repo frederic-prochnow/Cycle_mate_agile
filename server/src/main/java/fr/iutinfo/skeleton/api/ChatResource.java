@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import static fr.iutinfo.skeleton.api.BDDFactory.getDbi;
@@ -62,6 +63,7 @@ public class ChatResource {
         } else{
         	chat = null;
         }
+        Collections.reverse(chat);
         return chat;
     }
 
