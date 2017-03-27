@@ -19,11 +19,11 @@ public class Chat {
     private String message;
     private Date time;
     
-    public Chat(Integer id, String nom, String msg, Date date) {
+    public Chat(Integer id, String nom, String msg, long date) {
     	this.id = id;
     	this.nom = nom;
     	this.message = msg;
-    	this.time = date;
+    	this.time = new Date(date);
 	}
     
     public Chat() {}

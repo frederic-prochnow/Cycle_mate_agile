@@ -10,7 +10,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface ChatDao {
-    @SqlUpdate("create table Chat (id integer, nom text, message text, time date)")
+    @SqlUpdate("create table Chat (id integer, nom text, message text, time bigint)")
     void createChatTable();
 
     @SqlUpdate("insert into Chat values (:id, :nom, :message, :date)")
