@@ -15,14 +15,14 @@ public class Moyenne {
     
 	private int id;
     private int moyPuissance;
-    private int moyCalories;
+    private int moyCumulCalories;
     private int moyVitesse;
     private int moyFreqcard;
     
     public Moyenne(Integer id, int moyPuissance, int moyCalories, int moyVitesse, int moyFreqcard) {
     	this.id = id;
 		this.moyPuissance = moyPuissance;
-		this.moyCalories = moyCalories;
+		this.moyCumulCalories = moyCalories;
 		this.moyVitesse = moyVitesse;
 		this.moyFreqcard = moyFreqcard;
 	}
@@ -49,7 +49,7 @@ public class Moyenne {
 
 	@Override
 	public String toString() {
-		return "IdMoyenne [moyPuissance=" + moyPuissance + ", moyCalories=" + moyCalories + ", moyVitesse=" + moyVitesse
+		return "IdMoyenne [moyPuissance=" + moyPuissance + ", moyCalories=" + moyCumulCalories + ", moyVitesse=" + moyVitesse
 				+ ", moyFreqcard=" + moyFreqcard + "]";
 	}
 
@@ -62,7 +62,7 @@ public class Moyenne {
 		if (getClass() != obj.getClass())
 			return false;
 		Moyenne other = (Moyenne) obj;
-		if (moyCalories != other.moyCalories)
+		if (moyCumulCalories != other.moyCumulCalories)
 			return false;
 		if (moyFreqcard != other.moyFreqcard)
 			return false;
@@ -82,11 +82,11 @@ public class Moyenne {
 	}
 
 	public int getMoyCalories() {
-		return moyCalories;
+		return moyCumulCalories;
 	}
 
 	public void setMoyCalories(int moyCalories) {
-		this.moyCalories = moyCalories;
+		this.moyCumulCalories = moyCalories;
 	}
 
 	public int getMoyVitesse() {

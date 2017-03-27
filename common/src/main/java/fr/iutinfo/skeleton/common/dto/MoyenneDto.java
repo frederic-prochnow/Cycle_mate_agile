@@ -10,7 +10,7 @@ public class MoyenneDto implements Principal {
     
     private int id;
     private int moyPuissance;
-    private int moyCalories;
+    private int moyCumulCalories;
     private int moyVitesse;
     private int moyFreqcard;
     
@@ -21,10 +21,10 @@ public class MoyenneDto implements Principal {
 		this.moyPuissance = moyPuissance;
 	}
 	public int getMoyCalories() {
-		return moyCalories;
+		return moyCumulCalories;
 	}
 	public void setMoyCalories(int moyCalories) {
-		this.moyCalories = moyCalories;
+		this.moyCumulCalories = moyCalories;
 	}
 	public int getMoyVitesse() {
 		return moyVitesse;
