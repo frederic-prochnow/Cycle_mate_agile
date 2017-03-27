@@ -10,13 +10,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by brehonu on 23/03/17.
@@ -24,38 +23,142 @@ import java.net.URLConnection;
 
 public class ClientREST{
 
-    private Context context;
     private String url;
+    private RequestQueue queue;
 
     public ClientREST(Context context){
-        this.context = context;
         System.setProperty("http.proxyHost", "cache.univ-lille1.fr");
         System.setProperty("http.proxyPort", "3128");
-        this.url = "http://172.18.49.157:8080/v1/user";
+
+        this.url = "http://172.18.49.157:8080/CycleMate/";
+        this.queue = Volley.newRequestQueue(context);
     }
 
-    public String GetJSON(String localisation) {
-        RequestQueue queue = Volley.newRequestQueue(context);
-        final String[] res = new String[1];
+    public void GetListUser(final RestClassBack<List<User>> callBack) {
+        String url = this.url + "user/";
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        System.out.println("Response is: " + response.toString());
-                        res[0] = response.toString();
+                        // Instancie une superbe liste d'user
+                        callBack.onSuccess( new Gson().fromJson(response, new ArrayList<User>().getClass()) );
                     }
                 }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("Ca marche pas");
+                System.out.println("Ca marche pas : GET USER LIST");
                 System.out.println(error.getMessage());
             }
         });
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
-        return res[0];
     }
 
+    public void getUser(int nb, final RestClassBack<User> callBack){
+        String url = this.url + nb +"/";
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        // Instancie un user
+                        callBack.onSuccess( new Gson().fromJson(response, User.class) );
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Ca marche pas : GET USER");
+                System.out.println(error.getMessage());
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void setUser(int id, final String name, final RestClassBack<Boolean> callBack){
+        String url = this.url + "/user/";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                callBack.onSuccess(true);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Ca marche pas : POST USER");
+                System.out.println(error.getMessage());
+                callBack.onSuccess(false);
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("name", name);
+
+                return params;
+            }
+        };
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void sendMessage(final Message mes, final RestClassBack<Boolean> callBack){
+        String url = this.url + "chat/";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                callBack.onSuccess(true);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Ca marche pas : POST message");
+                System.out.println(error.getMessage());
+                callBack.onSuccess(false);
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("message", mes.message);
+                params.put("name", mes.name);
+
+                return params;
+            }
+        };
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void getMessage(final RestClassBack<Message[]> callBack){
+        String url = this.url + "chat/";
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        // Instancie un user
+                        callBack.onSuccess( new Gson().fromJson(response, Message[].class) );
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Ca marche pas : GET USER");
+                System.out.println(error.getMessage());
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+
 }
+
+
