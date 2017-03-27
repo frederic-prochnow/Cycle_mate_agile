@@ -8,23 +8,28 @@ import java.util.ArrayList;
 
 public class User {
 
-    private int bpm;
-    private int souffle;
+    private int id;
+    private String email;
     private String name;
+    private String alias;
 
-    public User(String name, int bpm, int souffle){
-        this.bpm = bpm;
-        this.souffle = souffle;
+    public User(String name, int id, String email, String alias){
         this.name = name;
+        this.email = email;
+        this.alias = alias;
+        this.id = id;
     }
 
-    public int getBpm(){return bpm;}
-    public int getSouffle(){return souffle;}
+    public User(){}
 
-    public void setBpm(int bpm){ this.bpm = bpm; }
-    public void setSouffle(int souffle){this.souffle = souffle;}
+    public String getAlias(){return alias;}
+    public String getEmail(){return email;}
+    public String getName(){return this.name;}
+    public int getId() {return this.id;}
+
+    public void setBpm(String alias){ this.alias = alias; }
 
     public String toString(){
-        return name+", bpm : "+bpm+", souffle : "+souffle;
+        return name+", email : "+email+", alias : "+alias;
     }
 }
