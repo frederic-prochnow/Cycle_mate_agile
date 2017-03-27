@@ -30,9 +30,9 @@ public class AdminTest {
     	assertEquals(admin.getPassword(),"mdp");
     }
     
-    @Test
+    /*@Test
     public void test_suppression(){
     	AdminDao dao = getDbi().open(AdminDao.class);
     	dao.delete(2);
-    }
+    }*/
 }

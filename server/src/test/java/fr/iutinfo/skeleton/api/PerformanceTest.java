@@ -31,8 +31,8 @@ public class PerformanceTest {
     	assertEquals(performance.getPuissance(),10);
     }
     
-    @Test
+    /*@Test
     public void test_suppression(){
     	dao.delete(65535);
-    }
+    }*/
 }
