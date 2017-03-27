@@ -20,9 +20,9 @@ public class ChatResource {
     private static boolean isDefault = true;
     
     public void creation_table(){
-    	dao.insert(new Chat(1, "Dylan", "Bonjour, je test le chat!", new Date().getTime()));
-    	dao.insert(new Chat(2, "Douglas", "Il semble fonctionner.", new Date().getTime()));
-    	dao.insert(new Chat(3, "Caroline", "Coucou tout le monde!", new Date().getTime()));
+    	dao.insert(new Chat("Dylan", "Bonjour, je test le chat!", new Date().getTime()));
+    	dao.insert(new Chat("Douglas", "Il semble fonctionner.", new Date().getTime()));
+    	dao.insert(new Chat("Caroline", "Coucou tout le monde!", new Date().getTime()));
     }
 
     public ChatResource() throws SQLException {
