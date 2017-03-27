@@ -11,37 +11,16 @@
     tools:context="prochnof.iutinfo.univlille1.fr.app_mobile.MainActivity"
     android:background="@android:color/darker_gray">
 
-    <Button
-        android:text="Puissance"
-        android:layout_width="240dp"
+    <TextView
+        android:text=""
         android:layout_height="80dp"
-        android:id="@+id/puissance"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Vitesse"
-        android:layout_width="240dp"
-        android:layout_height="80dp"
-        android:id="@+id/vitesse"
+        android:id="@+id/fc"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="521dp"
-        android:layout_marginEnd="521dp" />
-
-    <Button
-        android:text="Calories"
-        android:layout_width="240dp"
-        android:layout_height="80dp"
-        android:id="@+id/Calories"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/vitesse"
-        android:layout_toStartOf="@+id/vitesse"
-        android:layout_marginRight="270dp"
-        android:layout_marginEnd="270dp"
-        android:onClick="onClickVideo" />
+        android:layout_marginEnd="521dp"
+        android:layout_width="10dp" />
 
     <VideoView
         android:layout_width="wrap_content"
@@ -49,8 +28,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/videoView2"
-        android:layout_alignRight="@+id/vitesse"
-        android:layout_alignEnd="@+id/vitesse"
+        android:layout_alignRight="@+id/fc"
+        android:layout_alignEnd="@+id/fc"
         android:layout_height="800dp" />
 
     <ListView
@@ -64,11 +43,12 @@
         android:layout_toRightOf="@+id/videoView2"
         android:layout_toEndOf="@+id/videoView2"
         android:layout_width="400dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/borderblue"/>
 
     <ListView
         android:layout_width="400dp"
-        android:layout_above="@+id/vitesse"
+        android:layout_above="@+id/fc"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/chat"
@@ -77,7 +57,7 @@
         android:layout_toRightOf="@+id/videoView2"
         android:layout_toEndOf="@+id/videoView2"
         android:layout_marginLeft="20dp"
-        android:background="@drawable/border"/>
+        android:background="@drawable/borderblue" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -92,7 +72,7 @@
         android:layout_alignEnd="@+id/top10"
         android:layout_alignParentBottom="true"
         android:hint="   Message..."
-        android:background="@drawable/border"
+        android:background="@drawable/borderblue"
         android:paddingLeft="20dp" />
 
     <TextView
@@ -118,7 +98,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2"
-        android:onClick="doSend" />
+        android:onClick="doSend"
+        android:background="@drawable/borderblue" />
 
     <Button
         android:text="Rechercher"
@@ -130,7 +111,8 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/chat"
         android:layout_toRightOf="@+id/envoyer"
-        android:layout_toEndOf="@+id/envoyer" />
+        android:layout_toEndOf="@+id/envoyer"
+        android:background="@drawable/borderblue"/>
 
     <TextView
         android:text="LeaderBoard"
@@ -144,6 +126,440 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="159dp"
         android:layout_marginEnd="159dp" />
+
+    <RelativeLayout
+        android:id="@+id/vitesseLayout"
+        android:background="@drawable/borderblue"
+        android:layout_width="230dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp">
+
+        <TextView
+            android:text="Vitesse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blah"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:id="@+id/vitesseinstant"
+            android:textSize="30sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/BleuDouglas" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vitessemoyenne"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/vitesseinstant"
+            android:layout_alignBottom="@+id/vitesseinstant"
+            android:layout_toRightOf="@+id/blah"
+            android:layout_toEndOf="@+id/blah" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vitesseinstantgroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/vitessemoyenne"
+            android:layout_alignBottom="@+id/vitessemoyenne"
+            android:layout_toRightOf="@+id/vitessemoyenne"
+            android:layout_toEndOf="@+id/vitessemoyenne"
+            android:layout_marginLeft="23dp"
+            android:layout_marginStart="23dp" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vitessemoyennegroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/vitesseinstantgroupe"
+            android:layout_alignBottom="@+id/vitesseinstantgroupe"
+            android:layout_toRightOf="@+id/vitesseinstantgroupe"
+            android:layout_toEndOf="@+id/vitesseinstantgroupe"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" />
+
+        <TextView
+            android:text="Moi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView26"
+            android:layout_below="@+id/vitesseinstant"
+            android:layout_alignLeft="@+id/vitesseinstant"
+            android:layout_alignStart="@+id/vitesseinstant" />
+
+        <TextView
+            android:text="Moy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fezzefwzsf"
+            android:layout_below="@+id/vitesseinstant"
+            android:layout_alignLeft="@+id/vitessemoyenne"
+            android:layout_alignStart="@+id/vitessemoyenne" />
+
+        <TextView
+            android:text="Grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView28"
+            android:layout_alignBaseline="@+id/fezzefwzsf"
+            android:layout_alignBottom="@+id/fezzefwzsf"
+            android:layout_alignLeft="@+id/vitesseinstantgroupe"
+            android:layout_alignStart="@+id/vitesseinstantgroupe" />
+
+        <TextView
+            android:text="MGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView29"
+            android:layout_below="@+id/vitessemoyennegroupe"
+            android:layout_alignLeft="@+id/vitessemoyennegroupe"
+            android:layout_alignStart="@+id/vitessemoyennegroupe" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/puissanceLayout"
+        android:background="@drawable/borderblue"
+        android:layout_width="230dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_toRightOf="@+id/vitesseLayout">
+
+        <TextView
+            android:text="Puissance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blah2"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:id="@+id/puissanceinstant"
+            android:textSize="30sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/BleuDouglas" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/puissanceinstantgroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/puissancemoyenne"
+            android:layout_alignBottom="@+id/puissancemoyenne"
+            android:layout_toRightOf="@+id/puissancemoyenne"
+            android:layout_toEndOf="@+id/puissancemoyenne"
+            android:layout_marginLeft="23dp"
+            android:layout_marginStart="23dp" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/puissancemoyennegroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/puissanceinstantgroupe"
+            android:layout_alignBottom="@+id/puissanceinstantgroupe"
+            android:layout_toRightOf="@+id/puissanceinstantgroupe"
+            android:layout_toEndOf="@+id/puissanceinstantgroupe"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" />
+
+        <TextView
+            android:text="Moi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView262"
+            android:layout_below="@+id/puissanceinstant"
+            android:layout_alignLeft="@+id/puissanceinstant"
+            android:layout_alignStart="@+id/puissanceinstant" />
+
+        <TextView
+            android:text="Moy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/moyenne2"
+            android:layout_below="@+id/puissanceinstant"
+            android:layout_alignLeft="@+id/puissancemoyenne"
+            android:layout_alignStart="@+id/puissancemoyenne" />
+
+        <TextView
+            android:text="Grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView282"
+            android:layout_alignBaseline="@+id/moyenne2"
+            android:layout_alignBottom="@+id/moyenne2"
+            android:layout_alignLeft="@+id/puissanceinstantgroupe"
+            android:layout_alignStart="@+id/puissanceinstantgroupe" />
+
+        <TextView
+            android:text="MGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView292"
+            android:layout_below="@+id/puissancemoyennegroupe"
+            android:layout_alignLeft="@+id/puissancemoyennegroupe"
+            android:layout_alignStart="@+id/puissancemoyennegroupe" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/puissancemoyenne"
+            android:textSize="24sp"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/blah2"
+            android:layout_alignEnd="@+id/blah2" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/calorieLayout"
+        android:background="@drawable/borderblue"
+        android:layout_width="230dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_toRightOf="@+id/puissanceLayout">
+
+        <TextView
+            android:text="Calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blah3"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:id="@+id/calorieinstant"
+            android:textSize="30sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/BleuDouglas" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/caloriemoyenne"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/calorieinstant"
+            android:layout_alignBottom="@+id/calorieinstant"
+            android:layout_toRightOf="@+id/blah3"
+            android:layout_toEndOf="@+id/blah3" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/calorieinstantgroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/caloriemoyenne"
+            android:layout_alignBottom="@+id/caloriemoyenne"
+            android:layout_toRightOf="@+id/caloriemoyenne"
+            android:layout_toEndOf="@+id/caloriemoyenne"
+            android:layout_marginLeft="23dp"
+            android:layout_marginStart="23dp" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/caloriemoyennegroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/calorieinstantgroupe"
+            android:layout_alignBottom="@+id/calorieinstantgroupe"
+            android:layout_toRightOf="@+id/calorieinstantgroupe"
+            android:layout_toEndOf="@+id/calorieinstantgroupe"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" />
+
+        <TextView
+            android:text="Moi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView263"
+            android:layout_below="@+id/calorieinstant"
+            android:layout_alignLeft="@+id/calorieinstant"
+            android:layout_alignStart="@+id/calorieinstant" />
+
+        <TextView
+            android:text="Moy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/moyenne3"
+            android:layout_below="@+id/calorieinstant"
+            android:layout_alignLeft="@+id/caloriemoyenne"
+            android:layout_alignStart="@+id/caloriemoyenne" />
+
+        <TextView
+            android:text="Grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView283"
+            android:layout_alignBaseline="@+id/moyenne3"
+            android:layout_alignBottom="@+id/moyenne3"
+            android:layout_alignLeft="@+id/calorieinstantgroupe"
+            android:layout_alignStart="@+id/calorieinstantgroupe" />
+
+        <TextView
+            android:text="MGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView293"
+            android:layout_below="@+id/caloriemoyennegroupe"
+            android:layout_alignLeft="@+id/caloriemoyennegroupe"
+            android:layout_alignStart="@+id/caloriemoyennegroupe" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/frequenceLayout"
+        android:background="@drawable/borderblue"
+        android:layout_width="230dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_toRightOf="@+id/calorieLayout">
+
+        <TextView
+            android:text="Frequences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blah4"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:id="@+id/frequenceinstant"
+            android:textSize="30sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/BleuDouglas" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/frequenceinstantgroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/frequencemoyenne"
+            android:layout_alignBottom="@+id/frequencemoyenne"
+            android:layout_toRightOf="@+id/frequencemoyenne"
+            android:layout_toEndOf="@+id/frequencemoyenne"
+            android:layout_marginLeft="23dp"
+            android:layout_marginStart="23dp" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/frequencemoyennegroupe"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/frequenceinstantgroupe"
+            android:layout_alignBottom="@+id/frequenceinstantgroupe"
+            android:layout_toRightOf="@+id/frequenceinstantgroupe"
+            android:layout_toEndOf="@+id/frequenceinstantgroupe"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" />
+
+        <TextView
+            android:text="Moi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView264"
+            android:layout_below="@+id/frequenceinstant"
+            android:layout_alignLeft="@+id/frequenceinstant"
+            android:layout_alignStart="@+id/frequenceinstant" />
+
+        <TextView
+            android:text="Moy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/moyenne4"
+            android:layout_below="@+id/frequenceinstant"
+            android:layout_alignLeft="@+id/frequencemoyenne"
+            android:layout_alignStart="@+id/frequencemoyenne" />
+
+        <TextView
+            android:text="Grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView284"
+            android:layout_alignBaseline="@+id/moyenne4"
+            android:layout_alignBottom="@+id/moyenne4"
+            android:layout_alignLeft="@+id/frequenceinstantgroupe"
+            android:layout_alignStart="@+id/frequenceinstantgroupe" />
+
+        <TextView
+            android:text="MGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView294"
+            android:layout_below="@+id/frequencemoyennegroupe"
+            android:layout_alignLeft="@+id/frequencemoyennegroupe"
+            android:layout_alignStart="@+id/frequencemoyennegroupe" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/frequencemoyenne"
+            android:textSize="24sp"
+            android:layout_above="@+id/moyenne4"
+            android:layout_toRightOf="@+id/frequenceinstant"
+            android:layout_toEndOf="@+id/frequenceinstant"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp" />
+
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>

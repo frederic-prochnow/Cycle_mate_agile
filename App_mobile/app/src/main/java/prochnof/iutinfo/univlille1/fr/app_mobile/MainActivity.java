@@ -1,16 +1,13 @@
 package prochnof.iutinfo.univlille1.fr.app_mobile;
 
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.MediaController;
@@ -19,8 +16,6 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String[]> chat = new ArrayList<String[]>();
@@ -85,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         video.setVideoURI(uri);
         video.start();
 
+        ChangeSpeed(10,10,10,10);
+
         listLead.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,5 +115,17 @@ public class MainActivity extends AppCompatActivity {
             i++;
         }
         return -1;
+    }
+
+    public  void ChangeSpeed(int vitesseI, int vitesseMoy, int groupeI, int groupeMoy){
+        TextView tv1 = (TextView) findViewById(R.id.vitesseinstant);
+        TextView tv2 = (TextView) findViewById(R.id.vitessemoyenne);
+        TextView tv3 = (TextView) findViewById(R.id.vitesseinstantgroupe);
+        TextView tv4 = (TextView) findViewById(R.id.vitessemoyennegroupe);
+
+        tv1.setText(""+vitesseI);
+        tv2.setText(""+vitesseMoy);
+        tv3.setText(""+groupeI);
+        tv4.setText(""+groupeMoy);
     }
 }
