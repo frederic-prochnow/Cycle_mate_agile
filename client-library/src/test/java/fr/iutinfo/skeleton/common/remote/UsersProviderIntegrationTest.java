@@ -8,6 +8,8 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.format.DataFormatDetector;
+
 import fr.iutinfo.skeleton.api.Api;
 import fr.iutinfo.skeleton.api.BDDFactory;
 import fr.iutinfo.skeleton.api.User;
@@ -24,24 +26,6 @@ public class UsersProviderIntegrationTest extends JerseyTest {
         return new Api();
     }
 
-    @Test
-    public void should_read_remote_user() {
-        initDatabase();
-        createUser("Thomas");
-
-        UserDto user = usersProvider.readUser("Thomas");
-        Assert.assertEquals("Thomas", user.getName());
-    }
-
-    @Test
-    public void should_read_all_remote_user() {
-        initDatabase();
-        createUser("Thomas");
-        createUser("Olivier");
-
-        List<UserDto> users = usersProvider.readAllUsers();
-        Assert.assertEquals(2, users.size());
-    }
 
     @Test
     public void should_add_remote_user() {

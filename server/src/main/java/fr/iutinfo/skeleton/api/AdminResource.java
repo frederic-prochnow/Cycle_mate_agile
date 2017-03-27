@@ -20,12 +20,23 @@ import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 public class AdminResource {
     final static Logger logger = LoggerFactory.getLogger(AdminResource.class);
     private static AdminDao dao = getDbi().open(AdminDao.class);
+    private static boolean isDefault = true;
 
+    public void creation_table(){
+    	dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
+    }
+    
     public AdminResource() throws SQLException {
-        if (!tableExist("Admins")) {
-            logger.debug("Crate table Admins");
+        if (!tableExist("Admin")) {
+            logger.debug("Create table Admin");
             dao.createAdminTable();
-            dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
+            creation_table();
+        }if(tableExist("Admin")&&isDefault){
+        	dao.dropAdminTable();
+        	logger.debug("Create table Admin");
+            dao.createAdminTable();
+        	creation_table();
+        	isDefault = false;
         }
     }
 
@@ -33,8 +44,6 @@ public class AdminResource {
     public AdminDto createAdmin(AdminDto dto) {
         Admin admin = new Admin();
         admin.initFromDto(dto);
-        int id = dao.insert(admin);
-        dto.setAdMinId(id);
         return dto;
     }
 
@@ -60,10 +69,14 @@ public class AdminResource {
     }*/
 
     @GET
-    public List<Admin> getAllAdmins(@QueryParam("q") String query) {
+    public List<Admin> getAllAdmins(@QueryParam("q") String query) throws SQLException {
         List<Admin> admins;
         if (query == null) {
             admins = dao.all();
+            if (admins.isEmpty()){
+            	dao.insert(new Admin(1, "LaBoheme", "adminpwd"));
+            	admins = dao.all();
+            }
         } else{
         	admins = null;
         }

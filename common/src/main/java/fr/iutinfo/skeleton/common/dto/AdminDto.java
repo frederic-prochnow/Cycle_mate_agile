@@ -8,27 +8,27 @@ import org.slf4j.LoggerFactory;
 public class AdminDto implements Principal {
     final static Logger logger = LoggerFactory.getLogger(AdminDto.class);
 
-    private int AdMinId = 0;
-    private String Login;
-    private String Password;
+    private int id = 0;
+    private String login;
+    private String password;
     
-	public int getAdMinId() {
-		return AdMinId;
+	public int getId() {
+		return id;
 	}
-	public void setAdMinId(int adMinId) {
-		AdMinId = adMinId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getLogin() {
-		return Login;
+		return login;
 	}
 	public void setLogin(String login) {
-		Login = login;
+		this.login = login;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
-	public void setPassword(String Password) {
-		this.Password = Password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String getName() {
