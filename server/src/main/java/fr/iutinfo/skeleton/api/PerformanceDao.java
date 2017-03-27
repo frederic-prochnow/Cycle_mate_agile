@@ -87,11 +87,21 @@ public interface PerformanceDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     int FreqCardMoyPeriodicById(@Bind("id") int id, @Bind("periode") int periode);
     
-    /*@SqlQuery("select :column from Admin where AdMinId = :id")
+    @SqlQuery("select sum(calories) from Performance where id = :id and periode <= :periode")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    User findColumnByName(@Bind("id")   String id,
-    					  @Bind("column") String column);*/
+    int CumuledCalForPeriodByID(@Bind("id") int id, @Bind("periode") int periode);
     
+    @SqlQuery("select sum(calories) from Performance where periode <= :periode")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int CumuledCalForPeriod(@Bind("periode") int periode);
+    
+    @SqlQuery("select sum(calories) from Performance")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int CumuledCalTotal();
+    
+    @SqlQuery("select max(id) from Performance")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int TotalIds();
 	
     @SqlUpdate("drop table if exists Performance")
     void dropPerformanceTable();

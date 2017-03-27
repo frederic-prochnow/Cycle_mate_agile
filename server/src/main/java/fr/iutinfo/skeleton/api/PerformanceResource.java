@@ -189,45 +189,32 @@ public class PerformanceResource {
     @GET
     @Path("/moy/p{p}/{id}")
     public MoyenneDto getMoyennePeriodicbyID(@PathParam("id") int id, @PathParam("p") int periode) {
-    	int moyenneCal = dao.CaloriesMoyPeriodicById(id, periode);
+    	int cumulCal = dao.CumuledCalForPeriodByID(id, periode);
     	int moyennePuis = dao.PuissanceMoyPeriodicById(id, periode);
     	int moyenneVit = dao.VitesseMoyPeriodicById(id, periode);
     	int moyenneFc = dao.FreqCardMoyPeriodicById(id, periode);
-    	Moyenne moyennes = new Moyenne(id, moyennePuis, moyenneCal, moyenneVit, moyenneFc);    	
+    	Moyenne moyennes = new Moyenne(id, moyennePuis, cumulCal, moyenneVit, moyenneFc);    	
     	return moyennes.convertToDto();
     }
     
     @GET
     @Path("/moy/p{p}")
     public Moyenne getMoyenneGenPeriodic(@PathParam("p") int periode) {
-    	int moyenneCal = dao.CaloriesMoyPeriodic(periode);
+    	int cumulCal = dao.CumuledCalTotal();
+    	int nbid = dao.TotalIds();
+    	int moyenneCal = cumulCal/nbid;
     	int moyennePuis = dao.PuissanceMoyPeriodic(periode);
     	int moyenneVit = dao.VitesseMoyPeriodic(periode);
     	int moyenneFc = dao.FreqCardMoyPeriodic(periode);
     	Moyenne moyennes = new Moyenne(0, moyennePuis, moyenneCal, moyenneVit, moyenneFc);    	
     	return moyennes;
     }
-    
-    /*@GET
-    @Path("/{name}/{column}")
-    public PerformanceDto getPerformanceParam(@PathParam("name") String name, @PathParam("column") String column) {
-        Performance Performance = dao.findColumnByName(name, column);
-        System.out.println("Performance("+name+","+column+")  => "+Performance);
-        if (Performance == null) {
-            throw new WebApplicationException(404);
-        }
-        return Performance.convertToDto();
-    }*/
-
+  
     @GET
     public List<Performance> getAllPerformances(@QueryParam("q") String query) throws SQLException {
         List<Performance> performances;
         if (query == null) {
             performances = dao.all();
-            /*if (performances.isEmpty()){
-            	dao.insert(new Performance(1, 120, 3, 20, 145, 1));
-            	performances = dao.all();
-            }*/
         } else{
         	performances = null;
         }
