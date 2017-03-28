@@ -7,7 +7,7 @@
 		<title> Cycle_mate </title>
 </head>
 		
-	<body>
+	<body id="truc">
 			<header>
 						<h1 class="h11">Cycle</h1><h1 class="h12">Mate</h1>
 			</header>
@@ -25,7 +25,10 @@
 			<h2>"More than just cycling"</h2>
 	<!-- ----------------------------------------------------------------------------------- -->		
 			
-			
+			<img class="capture" src="img/capture.png" alt="application" />
+			<div class="info">
+				<p>L'application Digital C..... bla bla bla bla bla bla bla</p>			
+			</div>
 			<div id="dl">
 				
 				<h1>Télécharger</h1>
@@ -48,12 +51,12 @@
        						url: "172.18.49.157:8080/v1/user/",
        						dataType: 'json',
        					success: function (data) {
-       						var body = $('#pied');
+       						var body = $('#truc');
         						var parse = $.parseJSON(data);
         						$('<h4> the number of users is: '+parse.length+' </h4>').appendTo(body);
        					},
        					error : function(jqXHR, textStatus, errorThrown) {
-       						alert('error: ' + textStatus);
+       						alert('error : ' + textStatus);
        					}
      					});
      					})	;			
