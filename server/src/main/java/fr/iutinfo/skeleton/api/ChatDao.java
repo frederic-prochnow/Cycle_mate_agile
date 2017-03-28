@@ -26,7 +26,7 @@ public interface ChatDao {
 
     @SqlQuery("select * from Chat where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    List<Chat> findById(@Bind("id") int id);
+    Chat findById(@Bind("id") int id);
 
     void close();
 }

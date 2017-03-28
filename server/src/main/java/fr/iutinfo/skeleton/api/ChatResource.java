@@ -49,8 +49,8 @@ public class ChatResource {
 
     @GET
     @Path("/{id}")
-    public List<Chat> getChat(@PathParam("id") int id) {
-        List<Chat> chat;
+    public Chat getChat(@PathParam("id") int id) {
+        Chat chat;
         chat = dao.findById(id);
         return chat;
     }
