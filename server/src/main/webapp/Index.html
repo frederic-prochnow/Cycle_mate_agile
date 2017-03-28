@@ -126,8 +126,7 @@
        					success: function (data) {
        					console.log("OK" + data);
        						var body = $('#pied');
-        						var parse = $.parseJSON(data);
-        						$('<h4> the number of users is: '+Object.keys(parse).length+' </h4>').appendTo(body);
+        						$('<h4> the number of users is: '+data.length+' </h4>').appendTo(body);
        					},
        					error : function(jqXHR, textStatus, errorThrown) {
        						alert('error: ' + textStatus);

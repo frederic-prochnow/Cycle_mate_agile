@@ -124,6 +124,7 @@
        						type: "GET",
        						url: "http://172.18.49.157:8080/v1/user/",
        					success: function (data) {
+       					console.log("OK" + data);
        						var body = $('#pied');
         						var parse = $.parseJSON(data);
         						$('<h4> the number of users is: '+Object.keys(parse).length+' </h4>').appendTo(body);
