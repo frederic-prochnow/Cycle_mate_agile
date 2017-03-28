@@ -130,11 +130,11 @@
     <RelativeLayout
         android:id="@+id/vitesseLayout"
         android:background="@drawable/borderblue"
-        android:layout_width="230dp"
         android:layout_height="110dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp">
+        android:layout_marginStart="45dp"
+        android:layout_width="260dp">
 
         <TextView
             android:text="Vitesse"
@@ -237,12 +237,12 @@
     <RelativeLayout
         android:id="@+id/puissanceLayout"
         android:background="@drawable/borderblue"
-        android:layout_width="230dp"
         android:layout_height="110dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
-        android:layout_toRightOf="@+id/vitesseLayout">
+        android:layout_toRightOf="@+id/vitesseLayout"
+        android:layout_width="260dp">
 
         <TextView
             android:text="Puissance"
@@ -279,19 +279,6 @@
             android:layout_toEndOf="@+id/puissancemoyenne"
             android:layout_marginLeft="23dp"
             android:layout_marginStart="23dp" />
-
-        <TextView
-            android:text="25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/puissancemoyennegroupe"
-            android:textSize="24sp"
-            android:layout_alignBaseline="@+id/puissanceinstantgroupe"
-            android:layout_alignBottom="@+id/puissanceinstantgroupe"
-            android:layout_toRightOf="@+id/puissanceinstantgroupe"
-            android:layout_toEndOf="@+id/puissanceinstantgroupe"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp" />
 
         <TextView
             android:text="Moi"
@@ -340,16 +327,29 @@
             android:layout_alignRight="@+id/blah2"
             android:layout_alignEnd="@+id/blah2" />
 
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/puissancemoyennegroupe"
+            android:textSize="24sp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:layout_alignBaseline="@+id/puissanceinstantgroupe"
+            android:layout_alignBottom="@+id/puissanceinstantgroupe"
+            android:layout_toRightOf="@+id/puissanceinstantgroupe"
+            android:layout_toEndOf="@+id/puissanceinstantgroupe" />
+
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/calorieLayout"
         android:background="@drawable/borderblue"
-        android:layout_width="230dp"
         android:layout_height="110dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
-        android:layout_toRightOf="@+id/puissanceLayout">
+        android:layout_toRightOf="@+id/puissanceLayout"
+        android:layout_width="260dp">
 
         <TextView
             android:text="Calories"
@@ -452,12 +452,12 @@
     <RelativeLayout
         android:id="@+id/frequenceLayout"
         android:background="@drawable/borderblue"
-        android:layout_width="230dp"
         android:layout_height="110dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="45dp"
         android:layout_marginStart="45dp"
-        android:layout_toRightOf="@+id/calorieLayout">
+        android:layout_toRightOf="@+id/calorieLayout"
+        android:layout_width="260dp">
 
         <TextView
             android:text="Frequences"
@@ -496,19 +496,6 @@
             android:layout_marginStart="23dp" />
 
         <TextView
-            android:text="25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/frequencemoyennegroupe"
-            android:textSize="24sp"
-            android:layout_alignBaseline="@+id/frequenceinstantgroupe"
-            android:layout_alignBottom="@+id/frequenceinstantgroupe"
-            android:layout_toRightOf="@+id/frequenceinstantgroupe"
-            android:layout_toEndOf="@+id/frequenceinstantgroupe"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp" />
-
-        <TextView
             android:text="Moi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -537,15 +524,6 @@
             android:layout_alignStart="@+id/frequenceinstantgroupe" />
 
         <TextView
-            android:text="MGrp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView294"
-            android:layout_below="@+id/frequencemoyennegroupe"
-            android:layout_alignLeft="@+id/frequencemoyennegroupe"
-            android:layout_alignStart="@+id/frequencemoyennegroupe" />
-
-        <TextView
             android:text="25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -556,6 +534,28 @@
             android:layout_toEndOf="@+id/frequenceinstant"
             android:layout_marginLeft="21dp"
             android:layout_marginStart="21dp" />
+
+        <TextView
+            android:text="MGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView294"
+            android:layout_below="@+id/frequencemoyennegroupe"
+            android:layout_alignRight="@+id/frequencemoyennegroupe"
+            android:layout_alignEnd="@+id/frequencemoyennegroupe" />
+
+        <TextView
+            android:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/frequencemoyennegroupe"
+            android:textSize="24sp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:layout_alignBaseline="@+id/frequenceinstantgroupe"
+            android:layout_alignBottom="@+id/frequenceinstantgroupe"
+            android:layout_toRightOf="@+id/frequenceinstantgroupe"
+            android:layout_toEndOf="@+id/frequenceinstantgroupe" />
 
     </RelativeLayout>
 

@@ -11,7 +11,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +32,7 @@ public class ClientREST{
         System.setProperty("http.proxyHost", "cache.univ-lille1.fr");
         System.setProperty("http.proxyPort", "3128");
 
-        this.url = "http://172.18.49.157:8080/CycleMate/";
+        this.url = "http://172.18.49.157:8080/v1/";
         this.queue = Volley.newRequestQueue(context);
     }
 
@@ -143,8 +145,10 @@ public class ClientREST{
 
                     @Override
                     public void onResponse(String response) {
+                        ArrayList<Message> list = new ArrayList<Message>();
 
-                        callBack.onSuccess( new Gson().fromJson(response, Message[].class) );
+                        list = new Gson().fromJson(response, new TypeToken<ArrayList<Message>>(){}.getType());
+                        callBack.onSuccess( list.toArray(new Message[list.size()]));
                     }
                 }, new Response.ErrorListener() {
 

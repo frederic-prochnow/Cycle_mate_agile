@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
         }
         nom = "Vincent";
 
-        /*chat.add(new String[]{"Dylan","Yo tout le monde c'est Squishy !"});
+        chat.add(new String[]{"Dylan","Yo tout le monde c'est Squishy !"});
         chat.add(new String[]{"Lucas","Hey salut, ça va ?"});
         chat.add(new String[]{"Vincent","Ouais tranquil et vous ? mdr"});
-        chat.add(new String[]{"Dylan","Bien frere !"});*/
+        chat.add(new String[]{"Dylan","Bien frere !"});
 
-        ClientREST cr = new ClientREST(this);
+        /*ClientREST cr = new ClientREST(this);
         Chat c = new Chat(cr,this);
         c.getMessages();
         for(int i=0;i<c.chat.length;i++){
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             chat.add(new String[]{sms.name,sms.message});
             System.out.println("SMS nom : "+sms.name+ sms.message);
         }
-
+        */
         adapterLead = new CustomAdapter(this,lead,myNumber(lead,nom));
         final ListView listLead = (ListView)findViewById(R.id.leaderboard);
         System.out.print(myNumber(lead,nom));
@@ -86,13 +86,16 @@ public class MainActivity extends AppCompatActivity {
         MediaController mc = new MediaController(this);
         mc.setAnchorView(video);
         mc.setMediaPlayer(video);
-        String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.faze;
+        String path = "android.resource://prochnof.iutinfo.univlille1.fr.app_mobile/"+R.raw.fitness;
         Uri uri = Uri.parse(path);
         video.setMediaController(mc);
         video.setVideoURI(uri);
         video.start();
 
-
+        ChangeSpeed(30,26,33,28);
+        ChangePower(162,163,166,168);
+        ChangeCalorie(22,26,20,23);
+        ChangeFrequence(160,167,181,173);
 
         listLead.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
