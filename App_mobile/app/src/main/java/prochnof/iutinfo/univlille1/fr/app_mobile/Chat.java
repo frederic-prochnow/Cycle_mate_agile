@@ -3,6 +3,8 @@ package prochnof.iutinfo.univlille1.fr.app_mobile;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,19 +14,20 @@ import java.util.List;
 
 public class Chat {
 
-    Message[] chat;
+    ArrayList<Message> chat = new ArrayList<>();;
     ClientREST client;
     Context context;
+    Message[] tmp;
 
-    public Chat(ClientREST client, Context context){
-        chat = new Message[1];
-        chat[0] = new Message("Systeme :", "Bienvenue sur CycleMate");
+    public Chat(ClientREST client, Context context) {
+        chat.add(new Message("Systeme :", "Bienvenue sur CycleMate"));
+        tmp = new Message[0];
 
         this.client = client;
         this.context = context;
     }
 
-    public void sendMessage(Message mes){
+    public void sendMessage(Message mes) {
         final boolean resultat[] = new boolean[1];
         client.sendMessage(mes, new RestClassBack<Boolean>() {
             @Override
@@ -32,42 +35,41 @@ public class Chat {
                 resultat[0] = result;
             }
         });
-        if(!resultat[0]){
+        if (!resultat[0]) {
             Toast.makeText(context, "A error has occured : can't send your message", Toast.LENGTH_SHORT);
         }
     }
 
-    public void getMessages(){
-        final List<Message[]> tmp = new ArrayList<>();
-        Message[] tmp2;
-        client.getMessage(new RestClassBack<Message[]>() {
-            @Override
-            public void onSuccess(Message[] result) {
-                tmp.add(new Message[result.length]);
-                for(int i = 0; i < result.length; i++){
-                    tmp.get(0)[i] = result[i];
+    public void putMessages(int idxFinal) {
+        //final List<Message[]> tmp = new ArrayList<>();
+        int idxDepart = chat.get(chat.size()-1).id+1;
+            for(int i = idxDepart; i < idxFinal; i++) {
+                client.getMessage(i, new RestClassBack<Message>() {
+                    @Override
+                    public void onSuccess(Message result) {
+
+                     //TODO
                 }
+            });
+        }
+    }
+
+    public void getMessages(){
+        client.getMaxMessage(new RestClassBack<List<Message>>() {
+            @Override
+            public void onSuccess(List<Message> result) {
+
+                System.out
+                        .println("MESSAGES : "+ result.size());
+                for(Message sms : result) {
+                    System.out.println("LE MESSAGE EST : "+sms);
+                    chat.add(sms);
+                }
+                System.out.println("MESSAGES chat : "+ chat.size());
             }
         });
-
-        tmp2 = tmp.get(0);
-        int diff = tmp2[tmp2.length-1].id - chat[chat.length-1].id;
-        if(diff > 0){
-
-            Message[] result = new Message[chat.length+diff];
-            for(int i =0; i < chat.length; i++){
-                result[i] = chat[i];
-            }
-
-            int idxResult = chat.length;
-            int idx = tmp2.length - diff;
-            for(int i = 0; i < diff; i++){
-                result[idxResult] = tmp2[idx];
-                idx++;
-                idxResult++;
-            }
-            chat = result;
-        }
-
     }
+
+
 }
+

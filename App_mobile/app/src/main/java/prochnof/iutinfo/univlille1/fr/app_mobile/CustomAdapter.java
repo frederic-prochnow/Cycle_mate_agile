@@ -58,7 +58,6 @@ public class CustomAdapter extends BaseAdapter {
 
         if (position == numero) {
             view.setBackgroundColor(Color.parseColor("#2ca0c4"));
-            System.out.println("Trouvé pos : "+position);
         }else{
             view.setBackgroundColor(Color.parseColor("#b8b8b8"));
         }

@@ -3,6 +3,7 @@ package prochnof.iutinfo.univlille1.fr.app_mobile;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.lang.UScript;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,7 +14,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +45,9 @@ public class ClientREST{
                     @Override
                     public void onResponse(String response) {
                         // Instancie une superbe liste d'user
-                        callBack.onSuccess( new Gson().fromJson(response, new ArrayList<User>().getClass()) );
+                        List<User> users = new Gson().fromJson(response, new TypeToken<List<User>>(){}.getType());
+
+                        callBack.onSuccess(users);
                     }
                 }, new Response.ErrorListener() {
 
@@ -137,18 +139,16 @@ public class ClientREST{
         queue.add(stringRequest);
     }
 
-    public void getMessage(final RestClassBack<Message[]> callBack){
-        String url = this.url + "chat/";
+    public void getMessage(int id, final RestClassBack<Message> callBack){
+        String url = this.url + "chat/"+ id+ "/";
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
 
                     @Override
                     public void onResponse(String response) {
-                        ArrayList<Message> list = new ArrayList<Message>();
-
-                        list = new Gson().fromJson(response, new TypeToken<ArrayList<Message>>(){}.getType());
-                        callBack.onSuccess( list.toArray(new Message[list.size()]));
+                        System.out.println("CLIENT REST");
+                        callBack.onSuccess( new Gson().fromJson(response, Message.class ));
                     }
                 }, new Response.ErrorListener() {
 
@@ -170,7 +170,32 @@ public class ClientREST{
 
                     @Override
                     public void onResponse(String response) {
-                        callBack.onSuccess( new Gson().fromJson(response, new ArrayList<Performance>().getClass()) );
+                        List<Performance> performances = new Gson().fromJson(response, new TypeToken<List<Performance>>(){}.getType());
+                        callBack.onSuccess(performances );
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Ca marche pas : GET performances");
+                System.out.println(error.getMessage());
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+
+    public void getMaxMessage(final RestClassBack<List<Message>> callBack){
+        String url = this.url +"chat/";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        List<Message> messages = new Gson().fromJson(response, new TypeToken<List<Message>>(){}.getType());
+                        callBack.onSuccess( messages );
                     }
                 }, new Response.ErrorListener() {
 

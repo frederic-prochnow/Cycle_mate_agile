@@ -22,4 +22,8 @@ public class Message {
         this.id = id;
         this.date = date;
     }
+
+    public String toString(){
+        return name + " : "+ message;
+    }
 }

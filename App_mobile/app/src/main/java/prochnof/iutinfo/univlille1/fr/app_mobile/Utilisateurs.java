@@ -7,6 +7,7 @@ import org.w3c.dom.NodeList;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,37 +16,21 @@ import java.util.List;
 
 public class Utilisateurs {
 
-    private User[] users;
+    private List<User> users = new ArrayList<>();
 
-    public Utilisateurs(ClientREST client){
-        getUsersFromRest(client);
+    public Utilisateurs(ClientREST client, RestClassBack callback){
+        getUsersFromRest(client, callback);
     }
 
-    private void getUsersFromRest(final ClientREST client){
-        client.GetListUser( new RestClassBack<List<User>>(){
-            @Override
-            public void onSuccess(List<User> result) {
-                users = new User[result.size()];
-                for (int i = 0; i < users.length; i++){
-                    users[i] = result.get(i);
-                }
-                getUsersFromRest(client);
-            }
-        });
+    private void getUsersFromRest(final ClientREST client, RestClassBack callback){
+        client.GetListUser(callback);
     }
 
-    private void getPerfFromRest(ClientREST client){
-        client.getPerformances(new RestClassBack<List<Performance>>() {
-            @Override
-            public void onSuccess(List<Performance> result) {
-                for (int i = 0; i < result.size(); i++){
-                    users[i].setPerf(result.get(i));
-                }
-            }
-        });
+    private void getPerfFromRest(ClientREST client, RestClassBack callback){
+        client.getPerformances(callback);
     }
 
-    public User[] getUsers(){
+    public List<User> getUsers(){
         return users;
     }
 }

@@ -42,4 +42,8 @@ public class User {
         return name+", email : "+email+", alias : "+alias;
     }
 
+    public void updateVitesse(){
+        this.perf.vitesse = (int) (Math.random()*15 + 25);
+    }
+
 }

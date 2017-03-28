@@ -16,10 +16,11 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String[]> chat = new ArrayList<String[]>();
-    ArrayList<String> lead = new ArrayList<String>();
+    final ArrayList<String> lead = new ArrayList<String>();
     CustomAdapter adapterLead;
     ChatAdapter adapterChat;
     VideoView video;
@@ -37,28 +38,46 @@ public class MainActivity extends AppCompatActivity {
         }
         nom = "Vincent";
 
-        chat.add(new String[]{"Dylan","Yo tout le monde c'est Squishy !"});
-        chat.add(new String[]{"Lucas","Hey salut, ça va ?"});
-        chat.add(new String[]{"Vincent","Ouais tranquil et vous ? mdr"});
-        chat.add(new String[]{"Dylan","Bien frere !"});
+        final ClientREST cr = new ClientREST(getApplicationContext());
 
-        /*ClientREST cr = new ClientREST(this);
-        Chat c = new Chat(cr,this);
+        adapterLead = new CustomAdapter(this,lead,myNumber(lead,nom));
+        final ListView listLead = (ListView)findViewById(R.id.leaderboard);
+        listLead.setAdapter(adapterLead);
+
+        Utilisateurs users = new Utilisateurs(cr, new RestClassBack<List<User>>() {
+            @Override
+            public void onSuccess(List<User> result) {
+                for(User u : result){
+                    u.updateVitesse();
+                }
+                int taille = result.size();
+                for (int i = 0; i < taille; i++) {
+                    int max = 0;
+                    for (int j = 0; j < result.size(); j++) {
+                        if (result.get(j).getPerformance().vitesse > result.get(max).getPerformance().vitesse) {
+                            max = j;
+                        }
+                    }
+                    lead.add(result.get(max).getName());
+                    result.remove(max);
+                }
+
+                adapterLead.notifyDataSetChanged();
+            }
+        });
+
+        Chat c = new Chat(cr,getApplicationContext());
         c.getMessages();
-        for(int i=0;i<c.chat.length;i++){
-            System.out.print("La taille du tableau est : "+c.chat.length);
-            System.out.println("Les elements du tableau sont : "+c.chat[i].toString());
-        }
+        //for(int i=0;i<c.chat.size();i++){
+        System.out.print("La taille du tableau est : "+c.chat.size());
+        //    System.out.println("Les elements du tableau sont : "+c.chat.get(i).toString());
+        //}
         for(Message sms : c.chat){
             chat.add(new String[]{sms.name,sms.message});
             System.out.println("SMS nom : "+sms.name+ sms.message);
         }
-        */
-        adapterLead = new CustomAdapter(this,lead,myNumber(lead,nom));
-        final ListView listLead = (ListView)findViewById(R.id.leaderboard);
-        System.out.print(myNumber(lead,nom));
 
-        listLead.setAdapter(adapterLead);
+
 
         adapterChat = new ChatAdapter(this,chat,nom);
         listChat = (ListView)findViewById(R.id.chat);
@@ -105,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
                 popup.showAtLocation(findViewById(R.id.activity_main), Gravity.TOP,645,245+position*100);
             }
         });
+
+        /*int time = 0;
+        while(time < 10000) {
+            if(time%10 == 0)
+            setUsers(cr);
+        }*/
     }
     public void doSend(View view){
         String rep = et.getText().toString();
@@ -176,4 +201,34 @@ public class MainActivity extends AppCompatActivity {
         tv3.setText(""+groupeI);
         tv4.setText(""+groupeMoy);
     }
+
+    /*public void setUsers(final ClientREST cr){
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        Utilisateurs users = new Utilisateurs(cr, new RestClassBack<List<User>>() {
+                            @Override
+                            public void onSuccess(List<User> result) {
+                                for(User u : result){
+                                    u.updateVitesse();
+                                }
+                                int taille = result.size();
+                                for (int i = 0; i < taille; i++) {
+                                    int max = 0;
+                                    for (int j = 0; j < result.size(); j++) {
+                                        if (result.get(j).getPerformance().vitesse > result.get(max).getPerformance().vitesse) {
+                                            max = j;
+                                        }
+                                    }
+                                    lead.add(result.get(max).getName());
+                                    result.remove(max);
+                                }
+
+                                adapterLead.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                },
+                3000);
+    }*/
 }
