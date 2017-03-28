@@ -264,6 +264,7 @@ body h3
 #pied h4
 {
 	color: white;
+	
 }
 
 .capture
