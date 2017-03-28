@@ -261,6 +261,11 @@ body h3
 	text-align: left;
 }
 
+#pied h4
+{
+	color: white;
+}
+
 .capture
 {
 	position: relative;

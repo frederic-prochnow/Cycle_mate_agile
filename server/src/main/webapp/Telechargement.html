@@ -40,28 +40,26 @@
 		<footer>
 				<div id="pied">
 						<h2>Contacts</h2>
-
-		
 				</div>
-				<script>
-	$(document).ready(function() {
-						
-					         $.ajax({
-       						type: "GET",
-       						url: "172.18.49.157:8080/v1/user/",
-       						dataType: 'json',
-       					success: function (data) {
-       						var body = $('#truc');
-        						var parse = $.parseJSON(data);
-        						$('<h4> the number of users is: '+parse.length+' </h4>').appendTo(body);
-       					},
-       					error : function(jqXHR, textStatus, errorThrown) {
-       						alert('error : ' + textStatus);
-       					}
-     					});
-     					})	;			
-</script>	
 		</footer>
 	
 	</body>
 </html>
+
+<script>
+						$(document).ready(function() {
+						
+							$.ajax({
+       						type: "GET",
+       						url: "http://172.18.49.157:8080/v1/user/",
+       					success: function (data) {
+       					console.log("OK" + data);
+       						var body = $('#pied');
+        						$('<h4> Le nombre d\'utilisateurs du vélo est actuellement de : '+data.length+' </h4>').appendTo(body);
+       					},
+       					error : function(jqXHR, textStatus, errorThrown) {
+       						alert('error: ' + textStatus);
+       					}
+     					});
+     					})	;			
+						</script>	
