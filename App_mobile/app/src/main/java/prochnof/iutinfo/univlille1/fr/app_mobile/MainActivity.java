@@ -36,11 +36,23 @@ public class MainActivity extends AppCompatActivity {
             lead.add(s);
         }
         nom = "Vincent";
-        chat.add(new String[]{"Dylan","Yo tout le monde c'est Squishy !"});
+
+        /*chat.add(new String[]{"Dylan","Yo tout le monde c'est Squishy !"});
         chat.add(new String[]{"Lucas","Hey salut, ça va ?"});
         chat.add(new String[]{"Vincent","Ouais tranquil et vous ? mdr"});
-        chat.add(new String[]{"Dylan","Bien frere !"});
+        chat.add(new String[]{"Dylan","Bien frere !"});*/
 
+        ClientREST cr = new ClientREST(this);
+        Chat c = new Chat(cr,this);
+        c.getMessages();
+        for(int i=0;i<c.chat.length;i++){
+            System.out.print("La taille du tableau est : "+c.chat.length);
+            System.out.println("Les elements du tableau sont : "+c.chat[i].toString());
+        }
+        for(Message sms : c.chat){
+            chat.add(new String[]{sms.name,sms.message});
+            System.out.println("SMS nom : "+sms.name+ sms.message);
+        }
 
         adapterLead = new CustomAdapter(this,lead,myNumber(lead,nom));
         final ListView listLead = (ListView)findViewById(R.id.leaderboard);
@@ -80,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         video.setVideoURI(uri);
         video.start();
 
-        ChangeSpeed(10,10,10,10);
+
 
         listLead.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -125,6 +137,39 @@ public class MainActivity extends AppCompatActivity {
 
         tv1.setText(""+vitesseI);
         tv2.setText(""+vitesseMoy);
+        tv3.setText(""+groupeI);
+        tv4.setText(""+groupeMoy);
+    }
+    public  void ChangePower(int powerI, int powerMoy, int groupeI, int groupeMoy){
+        TextView tv1 = (TextView) findViewById(R.id.puissanceinstant);
+        TextView tv2 = (TextView) findViewById(R.id.puissancemoyenne);
+        TextView tv3 = (TextView) findViewById(R.id.puissanceinstantgroupe);
+        TextView tv4 = (TextView) findViewById(R.id.puissancemoyennegroupe);
+
+        tv1.setText(""+powerI);
+        tv2.setText(""+powerMoy);
+        tv3.setText(""+groupeI);
+        tv4.setText(""+groupeMoy);
+    }
+    public  void ChangeCalorie(int calorieI, int calorieMoy, int groupeI, int groupeMoy){
+        TextView tv1 = (TextView) findViewById(R.id.calorieinstant);
+        TextView tv2 = (TextView) findViewById(R.id.caloriemoyenne);
+        TextView tv3 = (TextView) findViewById(R.id.calorieinstantgroupe);
+        TextView tv4 = (TextView) findViewById(R.id.caloriemoyennegroupe);
+
+        tv1.setText(""+calorieI);
+        tv2.setText(""+calorieMoy);
+        tv3.setText(""+groupeI);
+        tv4.setText(""+groupeMoy);
+    }
+    public  void ChangeFrequence(int frequenceI, int frequenceMoy, int groupeI, int groupeMoy){
+        TextView tv1 = (TextView) findViewById(R.id.frequenceinstant);
+        TextView tv2 = (TextView) findViewById(R.id.frequencemoyenne);
+        TextView tv3 = (TextView) findViewById(R.id.frequenceinstantgroupe);
+        TextView tv4 = (TextView) findViewById(R.id.frequencemoyennegroupe);
+
+        tv1.setText(""+frequenceI);
+        tv2.setText(""+frequenceMoy);
         tv3.setText(""+groupeI);
         tv4.setText(""+groupeMoy);
     }

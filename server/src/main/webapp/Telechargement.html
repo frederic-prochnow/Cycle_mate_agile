@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+			<link rel="stylesheet" href="Style.css"/>
+			<meta charset="UTF-8"/>
+			<title> Cycle_mate </title>
+	</head>
+		
+	<body>
+			<header>
+						<h1 class="h11">Cycle</h1><h1 class="h12">Mate</h1>
+			</header>
+	
+	<!-- Menu du site web -->
+			<nav id="menu">
+					<ul>
+					<li><a href="Index.html">Experience CycleMate</a></li>
+					<li><a href="Velo.html">Le velo</a></li>
+					<li><a href="Telechargement.html">Digital Coaching</a></li>
+					<li><a href="Apropos.html">A Propos</a></li>					
+					</ul>
+			</nav>
+			
+			<h2>"More than just cycling"</h2>
+	<!-- ----------------------------------------------------------------------------------- -->		
+			<div id="dl">
+				
+				<h1>Télécharger</h1>
+				<a href="#" > <img class="boutonTelecharger" src="img/dl.png" alt="bouton" /> </a>
+								
+			</div>
+	
+	<!-- Pied de page -->	
+		<footer>
+				<div id="pied">
+						<h2>Contacts</h2>
+<script>
+						$(document).ready(function() {
+    $('#list').click(function (event) {
+              $.ajax({
+
+                url: "http://172.18.49.157/v1/user/",
+
+                type: "GET",
+
+                dataType : "json",
+
+                success: function( json ) {
+                    $( "<h1>" ).text( json.title ).appendTo( "body" );
+                    $( "<div class=\"content\">").html( json.html ).appendTo( "body" );
+                    
+                    $('#output').append('<ul>');
+                    json.forEach(function(element){
+                        $('#output').append("<li>"+JSON.stringify(element)+"</li>");         
+                    });
+                    $('#output').append('</ul>');
+                }
+                }
+                }
+                };
+</script>			
+				</div>
+		</footer>
+	
+	</body>
+</html>

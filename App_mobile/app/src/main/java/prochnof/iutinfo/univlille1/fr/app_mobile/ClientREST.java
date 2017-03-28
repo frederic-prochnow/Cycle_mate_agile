@@ -65,7 +65,7 @@ public class ClientREST{
 
                     @Override
                     public void onResponse(String response) {
-                        // Instancie un user
+
                         callBack.onSuccess( new Gson().fromJson(response, User.class) );
                     }
                 }, new Response.ErrorListener() {
@@ -143,14 +143,14 @@ public class ClientREST{
 
                     @Override
                     public void onResponse(String response) {
-                        // Instancie un user
+
                         callBack.onSuccess( new Gson().fromJson(response, Message[].class) );
                     }
                 }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("Ca marche pas : GET USER");
+                System.out.println("Ca marche pas : GET message");
                 System.out.println(error.getMessage());
             }
         });
@@ -158,7 +158,27 @@ public class ClientREST{
         queue.add(stringRequest);
     }
 
+    public void getPerformances(final RestClassBack<List<Performance>> callBack){
+        String url = this.url +"performance/";
 
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        callBack.onSuccess( new Gson().fromJson(response, new ArrayList<Performance>().getClass()) );
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Ca marche pas : GET performances");
+                System.out.println(error.getMessage());
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
 }
 
 
