@@ -111,14 +111,20 @@
 				<a href="#" > <img class="boutonRemonter" src="img/bouton-haut.png" alt="bouton" /> </a>
 				<div id="pied">
 						<h2>Contacts</h2>
-						<script>
+						
+				</div>
+		</footer>
+	</body>
+</html>
+
+<script>
 						$(document).ready(function() {
 						
 							$.ajax({
        						type: "GET",
-       						url: "172.18.49.157:8080/v1/user/",
-       						dataType: 'json',
+       						url: "http://172.18.49.157:8080/v1/user/",
        					success: function (data) {
+       					console.log("OK" + data);
        						var body = $('#pied');
         						var parse = $.parseJSON(data);
         						$('<h4> the number of users is: '+Object.keys(parse).length+' </h4>').appendTo(body);
@@ -129,7 +135,3 @@
      					});
      					})	;			
 						</script>	
-				</div>
-		</footer>
-	</body>
-</html>
