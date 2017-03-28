@@ -44,6 +44,7 @@ public class ChatResource {
     public ChatDto createChat(ChatDto dto) {
     	Chat chat = new Chat();
         chat.initFromDto(dto);
+        dao.insert(chat);
         return dto;
     }
 
@@ -52,6 +53,14 @@ public class ChatResource {
     public Chat getChat(@PathParam("id") int id) {
         Chat chat;
         chat = dao.findById(id);
+        return chat;
+    }
+    
+    @GET
+    @Path("/max")
+    public int getMxId() {
+        int chat;
+        chat = dao.getMaxId();
         return chat;
     }
 
