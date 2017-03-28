@@ -1,0 +1,274 @@
+
+/*----------------------- ENTETE -------------------------*/
+header
+{
+	position: relative;
+	width: 100%;
+	height: 25%;
+	border-radius: 7px 5px 0px 0px;
+	background-color: black;
+}
+
+.h11
+{
+	display: inline-block;
+	font-size: 450%;
+	margin-left: 40%;
+	font-weight: normal;
+	color: white;
+	font-family: "Calibril";
+}
+
+.h12
+{
+	display: inline-block;
+	font-size: 450%;
+	position: relative;
+	font-weight: bold;
+	color: #2ca0c4;
+	font-family: "ArialNarrow";
+}
+
+/*----------------------- MENU -------------------------*/
+#menu
+{
+	position: relative;
+	margin-top: -1%;
+	width: 100%; 
+	height: 40%;
+	border-radius: 0px 0px 7px 5px;
+	background-color: black;
+}
+
+#menu ul
+{
+	margin: 1% 1% 1% 11%;
+}
+
+#menu ul li
+{
+	font-size: 200%;
+	display: inline;
+	padding-left: 6.5%;
+}
+
+#menu a
+{
+	color: #b8b8b8;
+	text-decoration: none;
+	font-family: "ArialNarrow";
+}
+
+/*----------------------- CORPS -------------------------*/
+
+/*---- Comun ----*/
+body
+{
+	background-color: white;
+}
+
+body h1
+{
+	text-align: center;
+	font-size: 250%;
+	font-family: "ArialNarrow";
+	margin-top: 3%;
+}
+
+body h2
+{
+	margin-top: 4%;
+	text-align: center;
+	font-size: 250%;
+	font-family: "Calibril";
+	color: #b8b8b8;
+}
+
+body h3
+{
+	margin-bottom: -1%;
+	text-align: justify;
+	font-size: 160%;
+	font-family: "Calibril";
+	max-width: 50%;
+}
+
+/*---- - ----*/
+/*---- CSS pour 1 les blocks de l'index ----*/
+#corps
+{
+	display: inline-block;
+	margin-top: 2%;
+	width: 100%;
+	min-height: 70%;
+}
+
+#corps div
+{
+	min-height: 20%;
+	border-top: 3px groove black;
+	border-bottom: 3px groove black;	
+}
+
+.block_p /* p = pair */
+{
+	background-color: #2ca0c4;
+}
+
+#corps h1
+{
+	position: absolute;
+	font-family: "Calibril";
+	color: #b8b8b8;
+	text-align: center;
+}
+
+.tech,.com
+{
+	margin-top: -15.5%;
+	margin-left: 3.7%;
+}
+
+.douglas
+{
+	margin-top: -12.5%;
+	margin-left: 6.5%;
+}
+
+.perf
+{
+	margin-top: -12.5%;
+	margin-left: 78.5%;
+}
+
+.eng
+{
+	margin-top: -12.5%;
+	margin-left: 82%;
+}
+
+/*---- Propriétés de l'image ----*/
+#corps img
+{
+	display: inline;
+	width: 40%;		
+	height: 60%;	
+}
+.rond
+{
+	position: static;
+	margin-left: -8%;
+}
+
+.rond_droit
+{
+	position: relative;
+	margin-left: 68%;
+}
+/*---- - ----*/
+
+#corps nav
+{
+	position: absolute;
+	margin-top: 2%;
+	margin-bottom: 1%;
+	max-height: 30%;
+	max-width: 60%;
+}
+
+#corps h2
+{
+	margin: 5% 10% 5% 10%;
+	text-align: center;
+	font-size: 250%;
+}
+
+#corps p
+{
+	text-align: justify;
+	font-size: 180%;
+	font-family: "Calibril";
+}
+
+.pair
+{
+	color: white; 
+}
+
+.impair
+{
+	color: #b8b8b8;
+}
+
+.pb_p
+{
+	display: inline-block;
+	margin-left: -5%;
+}
+
+.pb_i
+{
+	margin-left: 2%;
+}
+
+/*---- Telecharger ----*/
+
+#dl
+{
+	border: 2px inset black;
+	border-radius: 4%;
+	width: 30%;
+	margin-left: 65%;	
+}
+
+#dl h1
+{
+	color: #2ca0c4;
+	font-family: "ArialNarrow";
+	position: absolute;
+	margin-left: 2%;
+	margin-top: 8%;
+}
+
+.boutonTelecharger
+{
+	margin-left: 48%;
+}
+
+/*----------------------- PIED -------------------------*/
+
+.boutonRemonter
+{
+	width: 7%;
+	margin-left: 45%;
+	margin-top: 10%;
+	margin-bottom: -3%;
+}
+
+#pied
+{
+	height: 10%;
+	bottom: 0;
+	background-color: black;
+	border-radius: 5px 5px 5px 5px;
+}
+
+#pied h2
+{
+	font-size: 150%;
+	text-align: left;
+}
+
+
+/*----------------------- POLICES ----------------------*/
+@font-face
+{
+    font-family: "ArialNarrow";
+    src: url('polices/arial-narrow.ttf');
+}
+
+@font-face									
+{
+    font-family: "Calibril";
+    src: url('polices/calibril.ttf');
+}

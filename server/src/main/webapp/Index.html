@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+			<link rel="stylesheet" href="Style.css"/>
+			<meta charset="UTF-8"/>
+			<script>src='jquery-2.1.3.js'</script>
+			<title> Cycle_mate </title>
+	</head>
+		
+	<body>
+			<header>
+						<h1 class="h11">Cycle</h1><h1 class="h12">Mate</h1>
+			</header>
+
+	<!-- Menu du site web -->
+			<nav id="menu">
+					<ul>
+					<li><a href="Index.html">Experience CycleMate</a></li>
+					<li><a href="Velo.html">Le velo</a></li>
+					<li><a href="Telechargement.html">Digital Coaching</a></li>
+					<li><a href="Apropos.html">A Propos</a></li>					
+					</ul>
+			</nav>
+			
+			<h2>"More than just cycling"</h2>
+			
+			<h3> Le cycling sans contraintes</h3>
+			
+	<!-- 1 block avec le rond a gauche -->
+			<div id="corps">
+			
+				<div class="block_p">
+					
+					<img class="rond" src="img/rond3.png" alt="rond">
+					<h1 class="com">COMMUNAUTE<br>&<br>LIBERTE</h1>
+					
+					<nav class="pb_p">
+					
+						<p class="pair"> Imaginez que vous choisissez votre cours selon vos envies et votre forme du moment : envie de l’ambiance Live? prenez un cours en direct et rejoignez les autres CycleMaters pour une session qui va vous réveiller ! Envie d’un cours en différé recommandé par la communauté avec ce coach, ancien Ironman, qui vous épate ? Optez pour ce cours à base d’élévations brusques de fréquence cardiaque. Un peu fatigué, pas trop la forme : optez pour un cours de Pilates ! </p>
+					
+					</nav>	
+				
+				</div>
+				
+	<!-- ----------------------------------------------------------------------------------------------------- -->			
+	
+	<!-- 1 block avec le rond a droite -->			
+				<div class="block_i">
+					
+						<nav class="pb_i">
+						
+						<p class="impair"> Imaginez que vous pouvez suivre vos performances comme un pro : la technologie CycleMate vous permet de suivre en temps réel vos performances et celles des autres participants. Consulter votre leaderboard, mesurez votre progression par rapport au dernier cours et mettez-en œuvre les recommandations individualisées de la plateforme CycleMate. Entrainez-vous comme un pro du vélo, mais à votre rythme !  </p>
+						
+					</nav>	
+					
+					<img class="rond_droit" src="img/rond1.png" alt="rond"> 
+					<h1 class="perf">PERFORMANCE</h1>				
+				
+				</div>
+	<!-- ----------------------------------------------------------------------------------------------------- -->			
+	
+	<!-- 1 block avec le rond a gauche -->			
+				<div class="block_p">
+					
+					<img class="rond" src="img/rond3.png" alt="rond">
+					<h1 class="tech">TECHNOLOGIE<br>&<br>DESIGN</h1>
+					
+					<nav class="pb_p">
+						
+						<p class="pair"> Imaginez un petit bijou de technologie chez vous : le vélo CycleMate n’est pas juste un vélo. Oubliez les vélos d’appartement de votre grand-mère et du télé-achat : CycleMate c’est un bijou de design, un objet connecté unique, qui fera de votre expérience de cycling un plaisir aussi bien technique qu’esthétique. Une petite merveille pensée par les passionnées de vélo</p>
+					
+					</nav>		
+				
+				</div>
+	<!-- ----------------------------------------------------------------------------------------------------- -->				
+	
+	<!-- 1 block avec le rond a droite -->			
+				<div class="block_i">
+					
+					<nav class="pb_i">
+						<p class="impair">Imaginez que vous ne rouliez pas que pour vous mais aussi avec les autres et pour les autres : donnez du sens à votre pratique sportive. Rejoignez les challenges « CycleMate » : plus vous roulez, plus nous roulons tous ensemble au sein de la communauté et nous levons de fonds pour les causes qui nous tiennent à cœur  </p>
+					</nav>	
+					
+					<img class="rond_droit" src="img/rond1.png" alt="rond"> 				
+					<h1 class="eng">ENGAGE</h1>
+				</div>		
+					
+	<!-- ----------------------------------------------------------------------------------------------------- -->
+	
+	<!-- 1 block avec le rond a gauche -->			
+				<div class="block_p">
+					
+					<img class="rond" src="img/rond3.png" alt="rond">
+					<h1 class="douglas">DOUGLAS</h1>
+					
+					<nav class="pb_p">
+						
+						<p class="pair">Douglas possède une double formation grandes écoles : il est Ingénieur Telecom (ESIGETEL, 1999) et diplômé de l’EDHEC Business School (2001). Douglas possède la double nationalité Franco-Américaine, deux nations de fanatiques de vélo ! </p>
+					
+					</nav>		
+				
+				</div>
+	<!-- ----------------------------------------------------------------------------------------------------- -->
+	
+	</div>
+	
+	<!-- Pied de page -->	
+		<footer>
+				<a href="#" > <img class="boutonRemonter" src="img/bouton-haut.png" alt="bouton" /> </a>
+				<div id="pied">
+						<h2>Contacts</h2>
+						<script>
+						$(document).ready(function() {
+						
+							$.ajax({
+       						type: "GET",
+       						url: "172.18.49.157:8080/v1/user/",
+       						dataType: 'json',
+       					success: function (data) {
+       						var body = $('#pied');
+        						var parse = $.parseJSON(data);
+        						$('<h4> the number of users is: '+parse.length+' </h4>').appendTo(body);
+       					},
+       					error : function(jqXHR, textStatus, errorThrown) {
+       						alert('error: ' + textStatus);
+       					}
+     					});
+     					})	;			
+						</script>	
+				</div>
+		</footer>
+	
+	</body>
+</html>
