@@ -23,6 +23,10 @@ public interface ChatDao {
     @SqlQuery("select * from Chat order by time desc limit 15")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Chat> all();
+    
+    @SqlQuery("select max(id) from Chat")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    int getMaxId();
 
     @SqlQuery("select * from Chat where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)

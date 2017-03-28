@@ -54,6 +54,14 @@ public class ChatResource {
         chat = dao.findById(id);
         return chat;
     }
+    
+    @GET
+    @Path("/max")
+    public int getChat() {
+        int chat;
+        chat = dao.getMaxId();
+        return chat;
+    }
 
     @GET
     public List<Chat> getAllChat(@QueryParam("q") String query) throws SQLException {
